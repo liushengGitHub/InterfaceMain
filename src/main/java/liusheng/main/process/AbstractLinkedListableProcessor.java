@@ -1,6 +1,7 @@
 package liusheng.main.process;
 
 import liusheng.main.listener.ProcessListener;
+import liusheng.main.pipeline.Pipeline;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.*;

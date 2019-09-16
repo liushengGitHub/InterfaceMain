@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import liusheng.main.app.bilibili.util.ConnectionUtils;
 import org.apache.log4j.Logger;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 
 import java.io.IOException;
 import java.lang.reflect.ParameterizedType;
@@ -42,7 +43,8 @@ public class AbstractParser<T> implements  Parser<T> {
         if ( content == null) {
 
             Document document = ConnectionUtils.getConnection(url).get();
-            content  = document.select("script").get(2).html().substring(PREFIX.length());
+            String script = document.select("script").stream().map(Element::html).filter(s -> s.contains(PREFIX)).findFirst().get();
+            content  = script.substring(PREFIX.length());
 
         }
         String script = content;

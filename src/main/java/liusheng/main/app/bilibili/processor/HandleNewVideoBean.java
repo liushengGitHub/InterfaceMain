@@ -16,19 +16,22 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Semaphore;
 
 public class HandleNewVideoBean extends AbstractLinkedListableProcessor<NewVideoBean,HandleNewVideoBean> {
 
     private List<? extends RetryDownloader.DownloaderListener> downloaderListeners;
     private final ExecutorService stepExecutorService;
     private int retry = 3;
+    private final Semaphore semaphore;
 
-    public HandleNewVideoBean(List<? extends RetryDownloader.DownloaderListener> downloaderListeners,ExecutorService stepExecutorService, int retry) {
+    public HandleNewVideoBean(List<? extends RetryDownloader.DownloaderListener> downloaderListeners, ExecutorService stepExecutorService, int retry, Semaphore semaphore) {
         this.downloaderListeners = downloaderListeners;
 
         this.stepExecutorService = stepExecutorService;
         this.retry = retry;
         //this.addListener(new DefaultProcessListener(retry));
+        this.semaphore = semaphore;
     }
    /*static class DefaultProcessListener implements ProcessListener<NewVideoBean>{
        private int retry;
@@ -122,7 +125,10 @@ public class HandleNewVideoBean extends AbstractLinkedListableProcessor<NewVideo
                             state.await();
 
                             if (!state.error){
+                                // 限流
+                                semaphore.acquire();
                                 new MergeAudioAndVideoFile(flvPath,mp3Path,fileName).run();
+                                semaphore.release();
                             }
 
                     }catch (Throwable throwable){

@@ -8,16 +8,19 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.concurrent.Semaphore;
 
 public class MergeFile implements Runnable {
     private final List<String> list;
     private final String name;
     private final String dir;
+    private final Semaphore semaphore;
 
-    public MergeFile(List<String> list, String name, String dir) {
+    public MergeFile(List<String> list, String name, String dir, Semaphore semaphore) {
         this.list = list;
         this.name = name;
         this.dir = dir;
+        this.semaphore = semaphore;
     }
 
     @Override

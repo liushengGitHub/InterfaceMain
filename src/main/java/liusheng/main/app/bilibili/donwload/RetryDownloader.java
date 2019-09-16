@@ -2,6 +2,7 @@ package liusheng.main.app.bilibili.donwload;
 
 import liusheng.main.app.bilibili.entity.DownloadEntity;
 import liusheng.main.app.bilibili.util.ConnectionUtils;
+import liusheng.main.app.bilibili.util.StringUtils;
 import liusheng.main.listener.ProcessListener;
 import liusheng.main.process.AbstractLinkedListableProcessor;
 import liusheng.main.process.ListableProcessor;
@@ -38,26 +39,31 @@ public class RetryDownloader extends AbstractLinkedListableProcessor<DownloadEnt
         int retry = input.getRetry();
         List<String> urls = input.getbUrls();
         String url = input.getUrl();
-        Path dirFile = input.getDirFile();
         Path filePath = input.getFilePath();
         String refererUrl = input.getRefererUrl();
 
         try {
+            // 下载
             retryDownload(retry, url, filePath, refererUrl);
         }catch (IOException e) {
+            // 如歌上述失败,则选择备用urls
             Exception t  = null;
+
+            if (urls == null || urls.isEmpty() ) throw  e;
             for (String u:
                     urls) {
                 try {
                     retryDownload(3, u, filePath, refererUrl);
+                    // 如果下载成功,就没有异常
+                    t = null;
                 }catch (Exception e1) {
                     t = e1;
                 }
             }
             if (t != null) {
                 t .addSuppressed(e);
+                throw  t;
             }
-            throw  t;
         }
     }
 

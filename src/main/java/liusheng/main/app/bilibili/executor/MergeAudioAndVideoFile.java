@@ -20,6 +20,7 @@ public class MergeAudioAndVideoFile implements  Runnable {
     @Override
     public void run() {
 
+
         try {
             ////ffmpeg -i /path/to/input-no-audio.mp4 -i input.mp3 -c copy /path/to/output.mp4
             //ffmpeg -f concat -i mylist.txt -c copy output.flv

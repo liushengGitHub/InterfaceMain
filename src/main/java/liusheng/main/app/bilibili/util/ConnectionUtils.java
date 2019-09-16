@@ -8,10 +8,19 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class ConnectionUtils {
-    public  static Connection getConnection(String url) {
-        return Jsoup.connect(url)
-                .ignoreContentType(true)
-                .timeout(60000);
+    public static Connection getConnection(String url) {
+        return getDoConnection(url, 3);
+    }
+
+    private static Connection getDoConnection(String url, int n) {
+        if (n == 0) return null;
+        try {
+            return Jsoup.connect(url)
+                    .ignoreContentType(true)
+                    .timeout(60000);
+        } catch (Exception e) {
+            return getDoConnection(url, n - 1);
+        }
     }
 
     public static HttpURLConnection getNativeConnection(String videoUrl) throws IOException {

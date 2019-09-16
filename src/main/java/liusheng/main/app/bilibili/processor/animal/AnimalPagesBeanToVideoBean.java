@@ -84,7 +84,7 @@ public class AnimalPagesBeanToVideoBean extends AbstractLinkedListableProcessor<
     private AbstractVideoBean createAndAdd(AnimalPagesBean animalPagesBean, AnimalPagesBean.EpInfoBean epInfoBean) {
         try {
             int index = epInfoBean.getI();
-            String longTitle = epInfoBean.getLongTitle();
+            String longTitle = StringUtils.fileNameHandle(epInfoBean.getLongTitle());
             int id = epInfoBean.getId();
             if (epInfoBean.getBadge().contains("会员")) return null;
 

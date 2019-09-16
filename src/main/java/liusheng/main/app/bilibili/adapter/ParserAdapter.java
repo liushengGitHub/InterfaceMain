@@ -6,5 +6,5 @@ import java.io.IOException;
 
 public interface ParserAdapter {
 
-    Parser<?> handle(String url) throws IOException;
+    Parser<?> handle(AdapterParam adapterParam) throws IOException;
 }
