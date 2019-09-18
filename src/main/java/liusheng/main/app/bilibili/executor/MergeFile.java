@@ -1,6 +1,7 @@
 package liusheng.main.app.bilibili.executor;
 
 import liusheng.main.app.bilibili.util.ProcessBuilderUtils;
+import org.apache.log4j.Logger;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -15,6 +16,7 @@ public class MergeFile implements Runnable {
     private final String name;
     private final String dir;
     private final Semaphore semaphore;
+    private final Logger logger = Logger.getLogger(MergeFile.class);
 
     public MergeFile(List<String> list, String name, String dir, Semaphore semaphore) {
         this.list = list;
@@ -31,19 +33,22 @@ public class MergeFile implements Runnable {
             //ffmpeg -f concat -i mylist.txt -c copy output.flv
             // 有点批问题
             //./ffmpeg.exe -f concat -safe 0 -i ./fileToMerge.txt -c copy -y ./out.mp4
-            ProcessBuilderUtils.executeAndDiscardOuput("ffmpeg", "-y" ,"-f", "concat","-safe", "0","-i", dir + File.separator + name + ".txt", "-c", "copy",dir + File.separator + name + ".mp4");
-
-            Files.delete(Paths.get(dir, name + ".txt"));
-
-            list.forEach(f-> {
-                try {
-                    Files.delete(Paths.get(f));
-                } catch (IOException e) {
-
-                }
-            });
+            ProcessBuilderUtils.executeAndDiscardOuput("ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", dir + File.separator + name + ".txt", "-c", "copy", dir + File.separator + name + ".mp4");
         } catch (Exception e) {
             throw new RuntimeException(e);
+        } finally {
+            try {
+                list.forEach(f -> {
+                    try {
+                        Files.delete(Paths.get(f));
+                    } catch (IOException e) {
+
+                    }
+                });
+                Files.delete(Paths.get(dir, name + ".txt"));
+            } catch (IOException e) {
+                logger.debug("删除失败");
+            }
         }
 
     }
@@ -54,7 +59,7 @@ public class MergeFile implements Runnable {
             list.forEach(n -> {
                 try {
                     // 在ffmpeg 中 需要存在两个\\才行
-                    bufferedWriter.write("file  " + n.replace("\\","\\\\"));
+                    bufferedWriter.write("file  " + n.replace("\\", "\\\\"));
                     bufferedWriter.newLine();
 
                 } catch (IOException e) {

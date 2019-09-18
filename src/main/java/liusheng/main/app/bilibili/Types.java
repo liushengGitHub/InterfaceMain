@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Types {
 
-    private static final Logger logger = Logger.getLogger(Types.class);
+  /*  private static final Logger logger = Logger.getLogger(Types.class);
 
     // 下载所有一个avID的所有视频
     public static void completelyAVAll(List<String> urls, String downloadDir) throws Throwable {
@@ -24,7 +24,7 @@ public class Types {
         defaultPipeline.addLast(new UrlToPagesBean());
         defaultPipeline.addLast(new PagesBeanToVideoBean(downloadDir));
         DownloadSpeedListener listener = new DownloadSpeedListener();
-        defaultPipeline.addLast(new ListVideoBeanToDisk(listener));
+        defaultPipeline.addLast(new ListVideoBeanToDisk(controller, listener));
         urls.forEach(url -> {
             try {
                 defaultPipeline.processor(url);
@@ -32,7 +32,6 @@ public class Types {
                 throwable.printStackTrace();
             }
         });
-
         Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(new Runnable() {
             long start = -1;
 
@@ -61,12 +60,28 @@ public class Types {
 
     // 下载 所有动漫
     public static void completelyAnimalAll(String url, String downloadDir) throws Throwable {
+        DownloadSpeedListener listener = new DownloadSpeedListener();
+
         DefaultPipeline defaultPipeline = new DefaultPipeline();
         defaultPipeline.addLast(new UrlToAnimalPagesBean());
         defaultPipeline.addLast(new AnimalPagesBeanToVideoBean(downloadDir));
-        // defaultPipeline.addLast(new ListVideoBeanToDisk(listener));
+        //defaultPipeline.addLast(new ListVideoBeanToDisk(controller, listener));
+        Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(new Runnable() {
+            long start = -1;
 
-        System.out.println(defaultPipeline.processor(url));
+            @Override
+            public void run() {
+                long size = listener.getSize();
+                if (start == -1) {
+                    start = size;
+                    return;
+                } else {
+                    logger.info(((size - start) / 1024));
+                    start = size;
+                }
+            }
+        }, 2, 1, TimeUnit.SECONDS);
+        defaultPipeline.processor(url);
     }
 
     //单集下载
@@ -77,6 +92,6 @@ public class Types {
         //  defaultPipeline.addLast(new ListVideoBeanToDisk(listener));
 
         System.out.println(defaultPipeline.processor(url));
-    }
+    }*/
 
 }

@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html>
+<head><title data-vue-meta="true">lbw - 搜索结果 - 哔哩哔哩弹幕视频网 - ( ゜- ゜)つロ 乾杯~ - bilibili</title>
+    <meta data-vue-meta="true" charset="UTF-8">
+    <meta data-vue-meta="true" http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta data-vue-meta="true" name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta data-vue-meta="true" name="description"
+          content="bilibili是国内知名的视频弹幕网站，这里有最及时的动漫新番，最棒的ACG氛围，最有创意的Up主。大家可以在这里找到许多欢乐。">
+    <meta data-vue-meta="true" name="keywords"
+          content="B站,弹幕,字幕,AMV,MAD,MTV,ANIME,动漫,动漫音乐,游戏,游戏解说,ACG,galgame,动画,番组,新番,初音,洛天依,vocaloid">
+    <meta name="spm_prefix" content="333.337">
+    <link rel="dns-prefetch" href="//s1.hdslb.com">
+    <link rel="dns-prefetch" href="//i0.hdslb.com">
+    <link rel="dns-prefetch" href="//i1.hdslb.com">
+    <link rel="dns-prefetch" href="//i2.hdslb.com">
+    <link rel="dns-prefetch" href="//static.hdslb.com">
+    <link rel="shortcut icon" href="//static.hdslb.com/images/favicon.ico">
+    <script type="text/javascript">window.spmReportData = {}, window.reportConfig = {
+        sample: 1,
+        scrollTracker: !0,
+        msgObjects: "spmReportData",
+        errorTracker: !0,
+        searchPage: !0
+    }</script>
+    <script type="text/javascript" src="//s1.hdslb.com/bfs/seed/log/report/log-reporter.js" crossorigin></script>
+    <script type="text/javascript" src="//s1.hdslb.com/bfs/static/jinkela/long/js/jquery/jquery1.7.2.min.js"></script>
+    <link rel="prefetch" as="script" href="//s1.hdslb.com/bfs/static/player/main/video.js?v=20190909">
+    <script type="text/javascript"
+            src="//www.bilibili.com/gentleman/polyfill.js?features=Promise%2CObject.assign%2CString.prototype.includes%2CNumber.isNaN"></script>
+    <script type="text/javascript" src="//s1.hdslb.com/bfs/static/jinkela/long/js/sentry/sentry-5.2.1.min.js"></script>
+    <script type="text/javascript" src="//s1.hdslb.com/bfs/static/jinkela/long/js/sentry/sentry.vue.js"></script>
+    <!-- <script type="text/javascript" src="//s1.hdslb.com/bfs/seed/jinkela/header/header.js"></script> -->
+    <link rel="preload"
+          href="//s1.hdslb.com/bfs/static/jinkela/search/css/search.1.e152130d18e3a819eeec601dcd2ca0c54499df9d.css"
+          as="style">
+    <link rel="preload"
+          href="//s1.hdslb.com/bfs/static/jinkela/search/1.search.e152130d18e3a819eeec601dcd2ca0c54499df9d.js"
+          as="script">
+    <link rel="preload"
+          href="//s1.hdslb.com/bfs/static/jinkela/search/css/search.0.e152130d18e3a819eeec601dcd2ca0c54499df9d.css"
+          as="style">
+    <link rel="preload"
+          href="//s1.hdslb.com/bfs/static/jinkela/search/search.e152130d18e3a819eeec601dcd2ca0c54499df9d.js"
+          as="script">
+    <link rel="stylesheet"
+          href="//s1.hdslb.com/bfs/static/jinkela/search/css/search.1.e152130d18e3a819eeec601dcd2ca0c54499df9d.css">
+    <link rel="stylesheet"
+          href="//s1.hdslb.com/bfs/static/jinkela/search/css/search.0.e152130d18e3a819eeec601dcd2ca0c54499df9d.css">
+</head>
+<body id="bili-search">
+<div class="z-top-container" style="height:56px"></div>
+<div id="search-app"></div>
+<div id="server-search-app" data-server-rendered="true" class="bili-search">
+    <div class="contain">
+        <div class="head-contain">
+            <div class="search-wrap">
+                <div>
+                    <div class="logo-input clearfix"><a href="javascript:;" class="search-logo"></a>
+                        <div class="search-block">
+                            <div class="input-wrap"><input id="search-keyword" type="text" maxlength="100"
+                                                           autocomplete="off" value="lbw">
+                                <div class="suggest-wrap" style="display:none;">
+                                    <div class="hotword-wrap" style="display:;">
+                                        <ul class="vertical">
+                                            <li class="title"><span>热搜榜</span></li>
+                                        </ul>
+                                    </div>
+                                    <ul class="keyword-wrap" style="display:none;"></ul>
+                                    <ul class="history-wrap" style="display:none;">
+                                        <li class="title"><span>搜索历史</span></li>
+                                        <li class="clearall"><a>清空搜索历史</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="search-button"><i class="icon-search-white"></i><span
+                                    class="search-text">搜索</span></div>
+                            <div class="search-loupe"><i class="icon-loupe"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="navigator">
+                <div class="v-switcher">
+                    <div class="v-switcher-header-wrap" style="height:56px;">
+                        <div class="v-switcher-header-before"></div>
+                        <div class="v-switcher-header-after"></div>
+                        <div class="v-switcher-header-tabs">
+                            <ul class="v-switcher-header v-switcher-header-around v-switcher-header-translate">
+                                <li class="v-switcher-header-item is-active"
+                                    style="height:56px;line-height:56px;width:11.11111111111111%;"><a
+                                        href="/all?keyword=lbw" class="router-link-active">
+                                    综合
+                                    <!----></a></li>
+                                <li class="v-switcher-header-item"
+                                    style="height:56px;line-height:56px;width:11.11111111111111%;"><a
+                                        href="/video?keyword=lbw">
+                                    视频
+                                    <!----></a></li>
+                                <li class="v-switcher-header-item"
+                                    style="height:56px;line-height:56px;width:11.11111111111111%;"><a
+                                        href="/bangumi?keyword=lbw">
+                                    番剧
+                                    <!----></a></li>
+                                <li class="v-switcher-header-item"
+                                    style="height:56px;line-height:56px;width:11.11111111111111%;"><a
+                                        href="/pgc?keyword=lbw">
+                                    影视
+                                    <!----></a></li>
+                                <li class="v-switcher-header-item"
+                                    style="height:56px;line-height:56px;width:11.11111111111111%;"><a
+                                        href="/live?keyword=lbw">
+                                    直播
+                                    <!----></a></li>
+                                <li class="v-switcher-header-item"
+                                    style="height:56px;line-height:56px;width:11.11111111111111%;"><a
+                                        href="/article?keyword=lbw">
+                                    专栏
+                                    <!----></a></li>
+                                <li class="v-switcher-header-item"
+                                    style="height:56px;line-height:56px;width:11.11111111111111%;"><a
+                                        href="/topic?keyword=lbw">
+                                    话题
+                                    <!----></a></li>
+                                <li class="v-switcher-header-item"
+                                    style="height:56px;line-height:56px;width:11.11111111111111%;"><a
+                                        href="/upuser?keyword=lbw">
+                                    用户
+                                    <!----></a></li>
+                                <li class="v-switcher-header-item"
+                                    style="height:56px;line-height:56px;width:11.11111111111111%;"><a
+                                        href="/photo?keyword=lbw">
+                                    相簿
+                                    <!----></a></li>
+                                <li class="v-switcher-header-anchor"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="display:none;"></div><!----></div>
+            </div>
+        </div>
+        <div class="body-contain">
+            <div id="all-list">
+                <div class="flow-loader"><!---->
+                    <div class="filter-wrap">
+                        <ul class="filter-type clearfix" style="display:none;"></ul>
+                        <ul class="filter-type clearfix" style="display:none;"><!----><!----></ul>
+                        <a class="fold up" style="display:none;"><span>收起</span><i class="arrow-up"></i></a><a
+                            class="fold down" style="display:none;"><span>更多筛选</span><i class="arrow-down"></i></a>
+                        <div class="load-state"><span class="loading">正在加载...</span></div>
+                    </div>
+                    <ul class="video-list clearfix">
+                        <li class="video-item matrix"><a href="//www.bilibili.com/video/av58185885?from=search"
+                                                         title="lbw教你科学地打耳光" target="_blank" class="img-anchor">
+                            <div class="img">
+                                <div class="lazy-img"><img alt="" src=""></div>
+                                <span class="so-imgTag_rb">01:17</span>
+                                <div class="watch-later-trigger watch-later"></div>
+                                <span class="mask-video"></span></div><!----></a>
+                            <div class="info">
+                                <div class="headline clearfix"><span class="type avid">av58185885</span><span
+                                        class="type hide">搞笑</span><a title="lbw教你科学地打耳光"
+                                                                      href="//www.bilibili.com/video/av58185885?from=search"
+                                                                      target="_blank" class="title"><em class="keyword">lbw</em>教你科学地打耳光</a>
+                                </div>
+                                <div class="des hide">
+                                    素质三连
+                                </div>
+                                <div class="tags"><span title="观看" class="so-icon watch-num"><i
+                                        class="icon-playtime"></i>
+        163
+      </span><span title="弹幕" class="so-icon hide"><i class="icon-subtitle"></i>
+        1
+      </span><span title="上传时间" class="so-icon time"><i class="icon-date"></i>
+        2019-07-07
+      </span><span title="up主" class="so-icon"><i class="icon-uper"></i><a
+                                        href="//space.bilibili.com/331350189?from=search" target="_blank"
+                                        class="up-name">方张写程序</a></span></div>
+                            </div>
+                        </li>
+                        <li class="video-item matrix"><a href="//www.bilibili.com/video/av44454364?from=search"
+                                                         title="lbw回来辣" target="_blank" class="img-anchor">
+                            <div class="img">
+                                <div class="lazy-img"><img alt="" src=""></div>
+                                <span class="so-imgTag_rb">00:26</span>
+                                <div class="watch-later-trigger watch-later"></div>
+                                <span class="mask-video"></span></div><!----></a>
+                            <div class="info">
+                                <div class="headline clearfix"><span class="type avid">av44454364</span><span
+                                        class="type hide">电子竞技</span><a title="lbw回来辣"
+                                                                        href="//www.bilibili.com/video/av44454364?from=search"
+                                                                        target="_blank" class="title"><em
+                                        class="keyword">lbw</em>回来辣</a></div>
+                                <div class="des hide">
+                                    dy
+                                </div>
+                                <div class="tags"><span title="观看" class="so-icon watch-num"><i
+                                        class="icon-playtime"></i>
+        6642
+      </span><span title="弹幕" class="so-icon hide"><i class="icon-subtitle"></i>
+        2
+      </span><span title="上传时间" class="so-icon time"><i class="icon-date"></i>
+        2019-02-23
+      </span><span title="up主" class="so-icon"><i class="icon-uper"></i><a
+                                        href="//space.bilibili.com/147598958?from=search" target="_blank"
+                                        class="up-name">糖糖糖ARTTTT</a></span></div>
+                            </div>
+                        </li>
+                        <li class="video-item matrix"><a href="//www.bilibili.com/video/av55694921?from=search"
+                                                         title="【LBW】斗鱼嘉年华到底谁最大赢家？" target="_blank" class="img-anchor">
+                            <div class="img">
+                                <div class="lazy-img"><img alt="" src=""></div>
+                                <span class="so-imgTag_rb">00:52</span>
+                                <div class="watch-later-trigger watch-later"></div>
+                                <span class="mask-video"></span></div><!----></a>
+                            <div class="info">
+                                <div class="headline clearfix"><span class="type avid">av55694921</span><span
+                                        class="type hide">明星</span><a title="【LBW】斗鱼嘉年华到底谁最大赢家？"
+                                                                      href="//www.bilibili.com/video/av55694921?from=search"
+                                                                      target="_blank" class="title">【<em
+                                        class="keyword">LBW</em>】斗鱼嘉年华到底谁最大赢家？</a></div>
+                                <div class="des hide">
+                                    这个人很懒，什么都没留下
+                                </div>
+                                <div class="tags"><span title="观看" class="so-icon watch-num"><i
+                                        class="icon-playtime"></i>
+        232
+      </span><span title="弹幕" class="so-icon hide"><i class="icon-subtitle"></i>
+        0
+      </span><span title="上传时间" class="so-icon time"><i class="icon-date"></i>
+        2019-06-15
+      </span><span title="up主" class="so-icon"><i class="icon-uper"></i><a
+                                        href="//space.bilibili.com/14124741?from=search" target="_blank"
+                                        class="up-name">阴三儿手里的北京晚报</a></span></div>
+                            </div>
+                        </li>
+                        <li class="video-item matrix"><a href="//www.bilibili.com/video/av65211492?from=search"
+                                                         title="我是水军，我来帮lbw洗地了。" target="_blank" class="img-anchor">
+                            <div class="img">
+                                <div class="lazy-img"><img alt="" src=""></div>
+                                <span class="so-imgTag_rb">18:24</span>
+                                <div class="watch-later-trigger watch-later"></div>
+                                <span class="mask-video"></span></div><!----></a>
+                            <div class="info">
+                                <div class="headline clearfix"><span class="type avid">av65211492</span><span
+                                        class="type hide">电子竞技</span><a title="我是水军，我来帮lbw洗地了。"
+                                                                        href="//www.bilibili.com/video/av65211492?from=search"
+                                                                        target="_blank" class="title">我是水军，我来帮<em
+                                        class="keyword">lbw</em>洗地了。</a></div>
+                                <div class="des hide">
+                                    这个叫弦生生的up主太惨了，三万多粉丝，用“心”制作长达39分的视频只有四千多播放了。
+                                    我们积极反对外挂行为，但我们更要有理智。
+                                    我来帮他宣传一下，@弦生生
+                                    涉及视频：av64645076
+                                </div>
+                                <div class="tags"><span title="观看" class="so-icon watch-num"><i
+                                        class="icon-playtime"></i>
+        261
+      </span><span title="弹幕" class="so-icon hide"><i class="icon-subtitle"></i>
+        1
+      </span><span title="上传时间" class="so-icon time"><i class="icon-date"></i>
+        2019-08-24
+      </span><span title="up主" class="so-icon"><i class="icon-uper"></i><a
+                                        href="//space.bilibili.com/435997505?from=search" target="_blank"
+                                        class="up-name">远古宋木头</a></span></div>
+                            </div>
+                        </li>
+                        <li class="video-item matrix"><a href="//www.bilibili.com/video/av64605037?from=search"
+                                                         title="在QQ找lbw的QQ会出现什么" target="_blank" class="img-anchor">
+                            <div class="img">
+                                <div class="lazy-img"><img alt="" src=""></div>
+                                <span class="so-imgTag_rb">00:26</span>
+                                <div class="watch-later-trigger watch-later"></div>
+                                <span class="mask-video"></span></div><!----></a>
+                            <div class="info">
+                                <div class="headline clearfix"><span class="type avid">av64605037</span><span
+                                        class="type hide">搞笑</span><a title="在QQ找lbw的QQ会出现什么"
+                                                                      href="//www.bilibili.com/video/av64605037?from=search"
+                                                                      target="_blank" class="title">在QQ找<em
+                                        class="keyword">lbw</em>的QQ会出现什么</a></div>
+                                <div class="des hide">
+                                    -
+                                </div>
+                                <div class="tags"><span title="观看" class="so-icon watch-num"><i
+                                        class="icon-playtime"></i>
+        40
+      </span><span title="弹幕" class="so-icon hide"><i class="icon-subtitle"></i>
+        0
+      </span><span title="上传时间" class="so-icon time"><i class="icon-date"></i>
+        2019-08-20
+      </span><span title="up主" class="so-icon"><i class="icon-uper"></i><a
+                                        href="//space.bilibili.com/314418129?from=search" target="_blank"
+                                        class="up-name">单手开枪</a></span></div>
+                            </div>
+                        </li>
+                        <li class="video-item matrix"><a href="//www.bilibili.com/video/av63257797?from=search"
+                                                         title="这个视频叫做LBW视频，祝姥爷生日快乐" target="_blank" class="img-anchor">
+                            <div class="img">
+                                <div class="lazy-img"><img alt="" src=""></div>
+                                <span class="so-imgTag_rb">00:19</span>
+                                <div class="watch-later-trigger watch-later"></div>
+                                <span class="mask-video"></span></div><!----></a>
+                            <div class="info">
+                                <div class="headline clearfix"><span class="type avid">av63257797</span><span
+                                        class="type hide">日常</span><a title="这个视频叫做LBW视频，祝姥爷生日快乐"
+                                                                      href="//www.bilibili.com/video/av63257797?from=search"
+                                                                      target="_blank" class="title">这个视频叫做<em
+                                        class="keyword">LBW</em>视频，祝姥爷生日快乐</a></div>
+                                <div class="des hide">
+                                    -
+                                </div>
+                                <div class="tags"><span title="观看" class="so-icon watch-num"><i
+                                        class="icon-playtime"></i>
+        621
+      </span><span title="弹幕" class="so-icon hide"><i class="icon-subtitle"></i>
+        1
+      </span><span title="上传时间" class="so-icon time"><i class="icon-date"></i>
+        2019-08-11
+      </span><span title="up主" class="so-icon"><i class="icon-uper"></i><a
+                                        href="//space.bilibili.com/79075364?from=search" target="_blank"
+                                        class="up-name">残星太阳</a></span></div>
+                            </div>
+                        </li>
+                        <li class="video-item matrix"><a href="//www.bilibili.com/video/av65206208?from=search"
+                                                         title="刘坤看LBW的csgo账号有多豪？s1mple pasha纪念龙驹、世界第一磨损的暗金皇帝+4连泰坦、蓝顶AK、全蓝爪。。我酸了"
+                                                         target="_blank" class="img-anchor">
+                            <div class="img">
+                                <div class="lazy-img"><img alt="" src=""></div>
+                                <span class="so-imgTag_rb">15:41</span>
+                                <div class="watch-later-trigger watch-later"></div>
+                                <span class="mask-video"></span></div><!----></a>
+                            <div class="info">
+                                <div class="headline clearfix"><span class="type avid">av65206208</span><span
+                                        class="type hide">电子竞技</span><a
+                                        title="刘坤看LBW的csgo账号有多豪？s1mple pasha纪念龙驹、世界第一磨损的暗金皇帝+4连泰坦、蓝顶AK、全蓝爪。。我酸了"
+                                        href="//www.bilibili.com/video/av65206208?from=search" target="_blank"
+                                        class="title">刘坤看<em class="keyword">LBW</em>的csgo账号有多豪？s1mple
+                                    pasha纪念龙驹、世界第一磨损的暗金皇帝+4连泰坦、蓝顶AK、全蓝爪。。我酸了</a></div>
+                                <div class="des hide">
+                                    ……
+                                </div>
+                                <div class="tags"><span title="观看" class="so-icon watch-num"><i
+                                        class="icon-playtime"></i>
+        12.8万
+      </span><span title="弹幕" class="so-icon hide"><i class="icon-subtitle"></i>
+        910
+      </span><span title="上传时间" class="so-icon time"><i class="icon-date"></i>
+        2019-08-24
+      </span><span title="up主" class="so-icon"><i class="icon-uper"></i><a
+                                        href="//space.bilibili.com/43160785?from=search" target="_blank"
+                                        class="up-name">F4ding</a></span></div>
+                            </div>
+                        </li>
+                        <li class="video-item matrix"><a href="//www.bilibili.com/video/av67465600?from=search"
+                                                         title="《复仇者联盟三：无限战争》鬼畜明星的集结。国产版最燃。张大仙/旭旭宝宝/lbw/pdd/李云龙/韩红/乔碧罗/周淑怡/杨超越等倾情出演"
+                                                         target="_blank" class="img-anchor">
+                            <div class="img">
+                                <div class="lazy-img"><img alt="" src=""></div>
+                                <span class="so-imgTag_rb">09:03</span>
+                                <div class="watch-later-trigger watch-later"></div>
+                                <span class="mask-video"></span></div><!----></a>
+                            <div class="info">
+                                <div class="headline clearfix"><span class="type avid">av67465600</span><span
+                                        class="type hide">鬼畜调教</span><a
+                                        title="《复仇者联盟三：无限战争》鬼畜明星的集结。国产版最燃。张大仙/旭旭宝宝/lbw/pdd/李云龙/韩红/乔碧罗/周淑怡/杨超越等倾情出演"
+                                        href="//www.bilibili.com/video/av67465600?from=search" target="_blank"
+                                        class="title">《复仇者联盟三：无限战争》鬼畜明星的集结。国产版最燃。张大仙/旭旭宝宝/<em class="keyword">lbw</em>/pdd/李云龙/韩红/乔碧罗/周淑怡/杨超越等倾情出演</a>
+                                </div>
+                                <div class="des hide">
+                                    取材自《复仇者联盟三：无限战争》张大仙/奇异博士 李云龙/钢铁侠 pdd/雷神 旭旭宝宝/冬兵 韩红/黑寡妇 杨超越/螳螂女 lbw/美国队长 小岳岳/黑豹
+                                    六小龄童/蜘蛛侠 孙笑川/灭霸 茄子/火箭 ...
+                                </div>
+                                <div class="tags"><span title="观看" class="so-icon watch-num"><i
+                                        class="icon-playtime"></i>
+        902
+      </span><span title="弹幕" class="so-icon hide"><i class="icon-subtitle"></i>
+        41
+      </span><span title="上传时间" class="so-icon time"><i class="icon-date"></i>
+        2019-09-12
+      </span><span title="up主" class="so-icon"><i class="icon-uper"></i><a
+                                        href="//space.bilibili.com/429981789?from=search" target="_blank"
+                                        class="up-name">扫地僧fz</a></span></div>
+                            </div>
+                        </li>
+                        <li class="video-item matrix"><a href="//www.bilibili.com/video/av7061022?from=search"
+                                                         title="【洛天依言和】我们好像在哪见过【LBW】" target="_blank"
+                                                         class="img-anchor">
+                            <div class="img">
+                                <div class="lazy-img"><img alt="" src=""></div>
+                                <span class="so-imgTag_rb">03:15</span>
+                                <div class="watch-later-trigger watch-later"></div>
+                                <span class="mask-video"></span></div><!----></a>
+                            <div class="info">
+                                <div class="headline clearfix"><span class="type avid">av7061022</span><span
+                                        class="type hide">VOCALOID·UTAU</span><a title="【洛天依言和】我们好像在哪见过【LBW】"
+                                                                                 href="//www.bilibili.com/video/av7061022?from=search"
+                                                                                 target="_blank" class="title">【洛天依言和】我们好像在哪见过【<em
+                                        class="keyword">LBW</em>】</a></div>
+                                <div class="des hide">
+                                    【我们好像在哪见过】 原唱:杨宗纬 叶蓓 词曲:小柯 翻唱:洛天依 言和 调:LBW
+                                    写不出词 只好随便调着玩了。 有没有人来合作下啊
+                                </div>
+                                <div class="tags"><span title="观看" class="so-icon watch-num"><i
+                                        class="icon-playtime"></i>
+        592
+      </span><span title="弹幕" class="so-icon hide"><i class="icon-subtitle"></i>
+        7
+      </span><span title="上传时间" class="so-icon time"><i class="icon-date"></i>
+        2016-11-12
+      </span><span title="up主" class="so-icon"><i class="icon-uper"></i><a
+                                        href="//space.bilibili.com/7576925?from=search" target="_blank" class="up-name">何生LiBw</a></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="video-item matrix"><a href="//www.bilibili.com/video/av64210363?from=search"
+                                                         title="lbw强势复出" target="_blank" class="img-anchor">
+                            <div class="img">
+                                <div class="lazy-img"><img alt="" src=""></div>
+                                <span class="so-imgTag_rb">00:04</span>
+                                <div class="watch-later-trigger watch-later"></div>
+                                <span class="mask-video"></span></div><!----></a>
+                            <div class="info">
+                                <div class="headline clearfix"><span class="type avid">av64210363</span><span
+                                        class="type hide">搞笑</span><a title="lbw强势复出"
+                                                                      href="//www.bilibili.com/video/av64210363?from=search"
+                                                                      target="_blank" class="title"><em class="keyword">lbw</em>强势复出</a>
+                                </div>
+                                <div class="des hide">
+                                    -
+                                </div>
+                                <div class="tags"><span title="观看" class="so-icon watch-num"><i
+                                        class="icon-playtime"></i>
+        142
+      </span><span title="弹幕" class="so-icon hide"><i class="icon-subtitle"></i>
+        0
+      </span><span title="上传时间" class="so-icon time"><i class="icon-date"></i>
+        2019-08-18
+      </span><span title="up主" class="so-icon"><i class="icon-uper"></i><a
+                                        href="//space.bilibili.com/360307546?from=search" target="_blank"
+                                        class="up-name">苏白Evan</a></span></div>
+                            </div>
+                        </li>
+                        <li class="video-item matrix"><a href="//www.bilibili.com/video/av61128068?from=search"
+                                                         title="鬼畜LBW" target="_blank" class="img-anchor">
+                            <div class="img">
+                                <div class="lazy-img"><img alt="" src=""></div>
+                                <span class="so-imgTag_rb">01:47</span>
+                                <div class="watch-later-trigger watch-later"></div>
+                                <span class="mask-video"></span></div><!----></a>
+                            <div class="info">
+                                <div class="headline clearfix"><span class="type avid">av61128068</span><span
+                                        class="type hide">人力VOCALOID</span><a title="鬼畜LBW"
+                                                                              href="//www.bilibili.com/video/av61128068?from=search"
+                                                                              target="_blank" class="title">鬼畜<em
+                                        class="keyword">LBW</em></a></div>
+                                <div class="des hide">
+                                    【點贊、投幣、關注】
+                                </div>
+                                <div class="tags"><span title="观看" class="so-icon watch-num"><i
+                                        class="icon-playtime"></i>
+        682
+      </span><span title="弹幕" class="so-icon hide"><i class="icon-subtitle"></i>
+        1
+      </span><span title="上传时间" class="so-icon time"><i class="icon-date"></i>
+        2019-07-28
+      </span><span title="up主" class="so-icon"><i class="icon-uper"></i><a
+                                        href="//space.bilibili.com/312982918?from=search" target="_blank"
+                                        class="up-name">w这名字woc</a></span></div>
+                            </div>
+                        </li>
+                        <li class="video-item matrix"><a href="//www.bilibili.com/video/av58592246?from=search"
+                                                         title="lbw没想到是个慈善家" target="_blank" class="img-anchor">
+                            <div class="img">
+                                <div class="lazy-img"><img alt="" src=""></div>
+                                <span class="so-imgTag_rb">00:04</span>
+                                <div class="watch-later-trigger watch-later"></div>
+                                <span class="mask-video"></span></div><!----></a>
+                            <div class="info">
+                                <div class="headline clearfix"><span class="type avid">av58592246</span><span
+                                        class="type hide">其他</span><a title="lbw没想到是个慈善家"
+                                                                      href="//www.bilibili.com/video/av58592246?from=search"
+                                                                      target="_blank" class="title"><em class="keyword">lbw</em>没想到是个慈善家</a>
+                                </div>
+                                <div class="des hide">
+                                    -
+                                </div>
+                                <div class="tags"><span title="观看" class="so-icon watch-num"><i
+                                        class="icon-playtime"></i>
+        110
+      </span><span title="弹幕" class="so-icon hide"><i class="icon-subtitle"></i>
+        0
+      </span><span title="上传时间" class="so-icon time"><i class="icon-date"></i>
+        2019-07-10
+      </span><span title="up主" class="so-icon"><i class="icon-uper"></i><a
+                                        href="//space.bilibili.com/321400135?from=search" target="_blank"
+                                        class="up-name">蓝洞人-泍纬</a></span></div>
+                            </div>
+                        </li>
+                        <li class="video-item matrix"><a href="//www.bilibili.com/video/av63188767?from=search"
+                                                         title="lbw牛逼！26岁生日快乐！永远的开哥" target="_blank" class="img-anchor">
+                            <div class="img">
+                                <div class="lazy-img"><img alt="" src=""></div>
+                                <span class="so-imgTag_rb">05:29</span>
+                                <div class="watch-later-trigger watch-later"></div>
+                                <span class="mask-video"></span></div><!----></a>
+                            <div class="info">
+                                <div class="headline clearfix"><span class="type avid">av63188767</span><span
+                                        class="type hide">日常</span><a title="lbw牛逼！26岁生日快乐！永远的开哥"
+                                                                      href="//www.bilibili.com/video/av63188767?from=search"
+                                                                      target="_blank" class="title"><em class="keyword">lbw</em>牛逼！26岁生日快乐！永远的开哥</a>
+                                </div>
+                                <div class="des hide">
+                                    lbw牛逼
+                                </div>
+                                <div class="tags"><span title="观看" class="so-icon watch-num"><i
+                                        class="icon-playtime"></i>
+        1638
+      </span><span title="弹幕" class="so-icon hide"><i class="icon-subtitle"></i>
+        8
+      </span><span title="上传时间" class="so-icon time"><i class="icon-date"></i>
+        2019-08-11
+      </span><span title="up主" class="so-icon"><i class="icon-uper"></i><a
+                                        href="//space.bilibili.com/51488427?from=search" target="_blank"
+                                        class="up-name">科比解说</a></span></div>
+                            </div>
+                        </li>
+                        <li class="video-item matrix"><a href="//www.bilibili.com/video/av60983259?from=search"
+                                                         title="仓鼠直播扬言：lbw给我500万我当lbw的狗。" target="_blank"
+                                                         class="img-anchor">
+                            <div class="img">
+                                <div class="lazy-img"><img alt="" src=""></div>
+                                <span class="so-imgTag_rb">07:41</span>
+                                <div class="watch-later-trigger watch-later"></div>
+                                <span class="mask-video"></span></div><!----></a>
+                            <div class="info">
+                                <div class="headline clearfix"><span class="type avid">av60983259</span><span
+                                        class="type hide">网络游戏</span><a title="仓鼠直播扬言：lbw给我500万我当lbw的狗。"
+                                                                        href="//www.bilibili.com/video/av60983259?from=search"
+                                                                        target="_blank" class="title">仓鼠直播扬言：<em
+                                        class="keyword">lbw</em>给我500万我当<em class="keyword">lbw</em>的狗。</a></div>
+                                <div class="des hide">
+                                    露出爪牙4分20秒
+                                </div>
+                                <div class="tags"><span title="观看" class="so-icon watch-num"><i
+                                        class="icon-playtime"></i>
+        854
+      </span><span title="弹幕" class="so-icon hide"><i class="icon-subtitle"></i>
+        3
+      </span><span title="上传时间" class="so-icon time"><i class="icon-date"></i>
+        2019-07-27
+      </span><span title="up主" class="so-icon"><i class="icon-uper"></i><a
+                                        href="//space.bilibili.com/37720706?from=search" target="_blank"
+                                        class="up-name">群雄日记</a></span></div>
+                            </div>
+                        </li>
+                        <li class="video-item matrix"><a href="//www.bilibili.com/video/av28468485?from=search"
+                                                         title="l vlog lBW+BML后台花絮全纪录" target="_blank"
+                                                         class="img-anchor">
+                            <div class="img">
+                                <div class="lazy-img"><img alt="" src=""></div>
+                                <span class="so-imgTag_rb">06:32</span>
+                                <div class="watch-later-trigger watch-later"></div>
+                                <span class="mask-video"></span></div><!----></a>
+                            <div class="info">
+                                <div class="headline clearfix"><span class="type avid">av28468485</span><span
+                                        class="type hide">日常</span><a title="l vlog lBW+BML后台花絮全纪录"
+                                                                      href="//www.bilibili.com/video/av28468485?from=search"
+                                                                      target="_blank" class="title">l vlog <em
+                                        class="keyword">lBW</em>+BML后台花絮全纪录</a></div>
+                                <div class="des hide">
+                                    肥肠宝贵的一次经历当然要记录下来o(*￣▽￣*)o
+                                </div>
+                                <div class="tags"><span title="观看" class="so-icon watch-num"><i
+                                        class="icon-playtime"></i>
+        1.3万
+      </span><span title="弹幕" class="so-icon hide"><i class="icon-subtitle"></i>
+        100
+      </span><span title="上传时间" class="so-icon time"><i class="icon-date"></i>
+        2018-08-04
+      </span><span title="up主" class="so-icon"><i class="icon-uper"></i><a
+                                        href="//space.bilibili.com/2691287?from=search" target="_blank" class="up-name">小巫酱w</a></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="video-item matrix"><a href="//www.bilibili.com/video/av53175725?from=search"
+                                                         title="lbw" target="_blank" class="img-anchor">
+                            <div class="img">
+                                <div class="lazy-img"><img alt="" src=""></div>
+                                <span class="so-imgTag_rb">00:07</span>
+                                <div class="watch-later-trigger watch-later"></div>
+                                <span class="mask-video"></span></div><!----></a>
+                            <div class="info">
+                                <div class="headline clearfix"><span class="type avid">av53175725</span><span
+                                        class="type hide">动物圈</span><a title="lbw"
+                                                                       href="//www.bilibili.com/video/av53175725?from=search"
+                                                                       target="_blank" class="title"><em
+                                        class="keyword">lbw</em></a></div>
+                                <div class="des hide">
+                                    -
+                                </div>
+                                <div class="tags"><span title="观看" class="so-icon watch-num"><i
+                                        class="icon-playtime"></i>
+        105
+      </span><span title="弹幕" class="so-icon hide"><i class="icon-subtitle"></i>
+        0
+      </span><span title="上传时间" class="so-icon time"><i class="icon-date"></i>
+        2019-05-21
+      </span><span title="up主" class="so-icon"><i class="icon-uper"></i><a
+                                        href="//space.bilibili.com/236423009?from=search" target="_blank"
+                                        class="up-name">白羽的裁决</a></span></div>
+                            </div>
+                        </li>
+                        <li class="video-item matrix"><a href="//www.bilibili.com/video/av62143975?from=search"
+                                                         title="和赌怪lbw打牌的感觉是什么样的？一起慈善！" target="_blank"
+                                                         class="img-anchor">
+                            <div class="img">
+                                <div class="lazy-img"><img alt="" src=""></div>
+                                <span class="so-imgTag_rb">01:17</span>
+                                <div class="watch-later-trigger watch-later"></div>
+                                <span class="mask-video"></span></div><!----></a>
+                            <div class="info">
+                                <div class="headline clearfix"><span class="type avid">av62143975</span><span
+                                        class="type hide">桌游棋牌</span><a title="和赌怪lbw打牌的感觉是什么样的？一起慈善！"
+                                                                        href="//www.bilibili.com/video/av62143975?from=search"
+                                                                        target="_blank" class="title">和赌怪<em
+                                        class="keyword">lbw</em>打牌的感觉是什么样的？一起慈善！</a></div>
+                                <div class="des hide">
+                                    -
+                                </div>
+                                <div class="tags"><span title="观看" class="so-icon watch-num"><i
+                                        class="icon-playtime"></i>
+        291
+      </span><span title="弹幕" class="so-icon hide"><i class="icon-subtitle"></i>
+        8
+      </span><span title="上传时间" class="so-icon time"><i class="icon-date"></i>
+        2019-08-04
+      </span><span title="up主" class="so-icon"><i class="icon-uper"></i><a
+                                        href="//space.bilibili.com/432440580?from=search" target="_blank"
+                                        class="up-name">万能天皇</a></span></div>
+                            </div>
+                        </li>
+                        <li class="video-item matrix"><a href="//www.bilibili.com/video/av67592562?from=search"
+                                                         title="【惊魂之旅】第一集 当pdd和lbw遇上孙笑川和乔碧萝" target="_blank"
+                                                         class="img-anchor">
+                            <div class="img">
+                                <div class="lazy-img"><img alt="" src=""></div>
+                                <span class="so-imgTag_rb">03:35</span>
+                                <div class="watch-later-trigger watch-later"></div>
+                                <span class="mask-video"></span></div><!----></a>
+                            <div class="info">
+                                <div class="headline clearfix"><span class="type avid">av67592562</span><span
+                                        class="type hide">鬼畜调教</span><a title="【惊魂之旅】第一集 当pdd和lbw遇上孙笑川和乔碧萝"
+                                                                        href="//www.bilibili.com/video/av67592562?from=search"
+                                                                        target="_blank" class="title">【惊魂之旅】第一集 当pdd和<em
+                                        class="keyword">lbw</em>遇上孙笑川和乔碧萝</a></div>
+                                <div class="des hide">
+                                    pdd、lbw和孙笑川、乔碧萝等联合出演，元首、华农兄弟和游乐王子等鬼畜明星友情客串。
+                                    之前出了点问题，所以又重新投了一遍。喜欢的话，记得点赞哦。
+                                </div>
+                                <div class="tags"><span title="观看" class="so-icon watch-num"><i
+                                        class="icon-playtime"></i>
+        799
+      </span><span title="弹幕" class="so-icon hide"><i class="icon-subtitle"></i>
+        18
+      </span><span title="上传时间" class="so-icon time"><i class="icon-date"></i>
+        2019-09-13
+      </span><span title="up主" class="so-icon"><i class="icon-uper"></i><a
+                                        href="//space.bilibili.com/2973218?from=search" target="_blank" class="up-name">有了梦想的咸鱼</a></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="video-item matrix"><a href="//www.bilibili.com/video/av7135962?from=search"
+                                                         title="【言和】逍遥【LBW】" target="_blank" class="img-anchor">
+                            <div class="img">
+                                <div class="lazy-img"><img alt="" src=""></div>
+                                <span class="so-imgTag_rb">04:18</span>
+                                <div class="watch-later-trigger watch-later"></div>
+                                <span class="mask-video"></span></div><!----></a>
+                            <div class="info">
+                                <div class="headline clearfix"><span class="type avid">av7135962</span><span
+                                        class="type hide">VOCALOID·UTAU</span><a title="【言和】逍遥【LBW】"
+                                                                                 href="//www.bilibili.com/video/av7135962?from=search"
+                                                                                 target="_blank"
+                                                                                 class="title">【言和】逍遥【<em
+                                        class="keyword">LBW</em>】</a></div>
+                                <div class="des hide">
+                                    自制
+                                    【逍遥】 原唱:霍建华 作曲:谭璇 作词:于正 翻唱:言和 调:LBW
+                                </div>
+                                <div class="tags"><span title="观看" class="so-icon watch-num"><i
+                                        class="icon-playtime"></i>
+        331
+      </span><span title="弹幕" class="so-icon hide"><i class="icon-subtitle"></i>
+        4
+      </span><span title="上传时间" class="so-icon time"><i class="icon-date"></i>
+        2016-11-17
+      </span><span title="up主" class="so-icon"><i class="icon-uper"></i><a
+                                        href="//space.bilibili.com/7576925?from=search" target="_blank" class="up-name">何生LiBw</a></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="video-item matrix"><a href="//www.bilibili.com/video/av48321974?from=search"
+                                                         title="放慢数倍之后，我LBW没有开挂" target="_blank" class="img-anchor">
+                            <div class="img">
+                                <div class="lazy-img"><img alt="" src=""></div>
+                                <span class="so-imgTag_rb">00:08</span>
+                                <div class="watch-later-trigger watch-later"></div>
+                                <span class="mask-video"></span></div><!----></a>
+                            <div class="info">
+                                <div class="headline clearfix"><span class="type avid">av48321974</span><span
+                                        class="type hide">电子竞技</span><a title="放慢数倍之后，我LBW没有开挂"
+                                                                        href="//www.bilibili.com/video/av48321974?from=search"
+                                                                        target="_blank" class="title">放慢数倍之后，我<em
+                                        class="keyword">LBW</em>没有开挂</a></div>
+                                <div class="des hide">
+
+                                </div>
+                                <div class="tags"><span title="观看" class="so-icon watch-num"><i
+                                        class="icon-playtime"></i>
+        1688
+      </span><span title="弹幕" class="so-icon hide"><i class="icon-subtitle"></i>
+        1
+      </span><span title="上传时间" class="so-icon time"><i class="icon-date"></i>
+        2019-04-05
+      </span><span title="up主" class="so-icon"><i class="icon-uper"></i><a
+                                        href="//space.bilibili.com/167871815?from=search" target="_blank"
+                                        class="up-name">当年明月_</a></span></div>
+                            </div>
+                        </li>
+                    </ul><!---->
+                    <div class="page-wrap">
+                        <div class="pager">
+                            <ul class="pages">
+                                <li class="page-item prev">
+                                    <button class="nav-btn iconfont icon-arrowdown2">
+                                        上一页
+                                    </button>
+                                </li><!----><!---->
+                                <li class="page-item">
+                                    <button class="pagination-btn num-btn">
+                                        1
+                                    </button>
+                                </li>
+                                <li class="page-item active">
+                                    <button class="pagination-btn num-btn">
+                                        2
+                                    </button>
+                                </li>
+                                <li class="page-item">
+                                    <button class="pagination-btn num-btn">
+                                        3
+                                    </button>
+                                </li>
+                                <li class="page-item">
+                                    <button class="pagination-btn num-btn">
+                                        4
+                                    </button>
+                                </li>
+                                <li class="page-item">
+                                    <button class="pagination-btn num-btn">
+                                        5
+                                    </button>
+                                </li>
+                                <li class="page-item">
+                                    <button class="pagination-btn num-btn">
+                                        6
+                                    </button>
+                                </li>
+                                <li class="page-item">
+                                    <button class="pagination-btn num-btn">
+                                        7
+                                    </button>
+                                </li>
+                                <strong>...</strong>
+                                <li class="page-item last">
+                                    <button class="pagination-btn">
+                                        18
+                                    </button>
+                                </li>
+                                <li class="page-item next">
+                                    <button class="nav-btn iconfont icon-arrowdown3">
+                                        下一页
+                                    </button>
+                                </li>
+                            </ul><!----></div>
+                    </div>
+                    <div class="flow-loader-state" style="text-align:center;"><!----></div>
+                </div>
+                <div class="video-info-module" style="display:none;">
+                    <div class="v-title"></div>
+                    <div class="v-info"><span class="name"></span><span class="line"></span><span class="time"></span>
+                    </div>
+                    <div class="v-preview clearfix">
+                        <div class="lazy-img"><img alt="" src=""></div>
+                        <p class="txt"></p></div>
+                    <div class="v-data"><span class="play"><i class="icon"></i>--</span><span class="danmu"><i
+                            class="icon"></i>--</span><span class="star"><i class="icon"></i>--</span><span
+                            class="coin"><i class="icon"></i>--</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="rocket-con" style="display:none;"></div>
+    </div>
+</div>
+<script>window.__INITIAL_STATE__ = {
+    "top_tlist": null,
+    "hotword": [],
+    "seid": "",
+    "lang": "zh-CN",
+    "suggestToken": "",
+    "hotWordToken": "",
+    "single_column": 0,
+    "flow": {
+        "getMixinFlowList-jump-keyword-lbw": {
+            "result": [{
+                "new_rec_tags": [],
+                "pubdate": 1562478295,
+                "rank_offset": 21,
+                "tag": "lbw,鬼畜素材,自制",
+                "duration": "1:17",
+                "id": 58185885,
+                "rank_score": 101833081,
+                "badgepay": false,
+                "senddate": 1562478565,
+                "title": "\u003Cem class=\"keyword\"\u003Elbw\u003C\u002Fem\u003E教你科学地打耳光",
+                "review": 0,
+                "mid": 331350189,
+                "is_union_video": 0,
+                "rank_index": 0,
+                "type": "video",
+                "arcrank": "0",
+                "play": 163,
+                "pic": "\u002F\u002Fi1.hdslb.com\u002Fbfs\u002Farchive\u002F48e432f4fbd3dda0d6c80508789d64499022d6a3.jpg",
+                "description": "素质三连",
+                "view_type": "",
+                "video_review": 1,
+                "is_pay": 0,
+                "favorites": 1,
+                "arcurl": "http:\u002F\u002Fwww.bilibili.com\u002Fvideo\u002Fav58185885",
+                "typeid": "138",
+                "author": "方张写程序",
+                "hit_columns": ["title", "tag"],
+                "typename": "搞笑",
+                "aid": 58185885,
+                "rec_tags": null
+            }, {
+                "new_rec_tags": [],
+                "pubdate": 1550899787,
+                "rank_offset": 22,
+                "tag": "英雄联盟,电子竞技",
+                "duration": "0:26",
+                "id": 44454364,
+                "rank_score": 101830789,
+                "badgepay": false,
+                "senddate": 1550899787,
+                "title": "\u003Cem class=\"keyword\"\u003Elbw\u003C\u002Fem\u003E回来辣",
+                "review": 14,
+                "mid": 147598958,
+                "is_union_video": 0,
+                "rank_index": 0,
+                "type": "video",
+                "arcrank": "0",
+                "play": 6642,
+                "pic": "\u002F\u002Fi0.hdslb.com\u002Fbfs\u002Farchive\u002F72db53fb383a1b07d1da9e9e7ebe1ccd67ef8f86.jpg",
+                "description": "dy",
+                "view_type": "",
+                "video_review": 2,
+                "is_pay": 0,
+                "favorites": 12,
+                "arcurl": "http:\u002F\u002Fwww.bilibili.com\u002Fvideo\u002Fav44454364",
+                "typeid": "171",
+                "author": "糖糖糖ARTTTT",
+                "hit_columns": ["title"],
+                "typename": "电子竞技",
+                "aid": 44454364,
+                "rec_tags": null
+            }, {
+                "new_rec_tags": [],
+                "pubdate": 1560603469,
+                "rank_offset": 23,
+                "tag": "斗鱼,嘉年华,直播,现场,五五开,主播",
+                "duration": "0:52",
+                "id": 55694921,
+                "rank_score": 101823161,
+                "badgepay": false,
+                "senddate": 1561816581,
+                "title": "【\u003Cem class=\"keyword\"\u003ELBW\u003C\u002Fem\u003E】斗鱼嘉年华到底谁最大赢家？",
+                "review": 1,
+                "mid": 14124741,
+                "is_union_video": 0,
+                "rank_index": 0,
+                "type": "video",
+                "arcrank": "0",
+                "play": 232,
+                "pic": "\u002F\u002Fi0.hdslb.com\u002Fbfs\u002Farchive\u002Fdb20feb5ef3868fb88ab279eb41c1020330e2fc4.jpg",
+                "description": "这个人很懒，什么都没留下",
+                "view_type": "",
+                "video_review": 0,
+                "is_pay": 0,
+                "favorites": 1,
+                "arcurl": "http:\u002F\u002Fwww.bilibili.com\u002Fvideo\u002Fav55694921",
+                "typeid": "137",
+                "author": "阴三儿手里的北京晚报",
+                "hit_columns": ["title"],
+                "typename": "明星",
+                "aid": 55694921,
+                "rec_tags": null
+            }, {
+                "new_rec_tags": [],
+                "pubdate": 1566659555,
+                "rank_offset": 24,
+                "tag": "电子竞技,新人,吃鸡,电竞,外挂,lbw,up主",
+                "duration": "18:24",
+                "id": 65211492,
+                "rank_score": 101793057,
+                "badgepay": false,
+                "senddate": 1566662914,
+                "title": "我是水军，我来帮\u003Cem class=\"keyword\"\u003Elbw\u003C\u002Fem\u003E洗地了。",
+                "review": 258,
+                "mid": 435997505,
+                "is_union_video": 0,
+                "rank_index": 0,
+                "type": "video",
+                "arcrank": "0",
+                "play": 261,
+                "pic": "\u002F\u002Fi1.hdslb.com\u002Fbfs\u002Farchive\u002F7004c559b6d572cc3af5da4a204c3780952233a9.jpg",
+                "description": "这个叫弦生生的up主太惨了，三万多粉丝，用“心”制作长达39分的视频只有四千多播放了。\n我们积极反对外挂行为，但我们更要有理智。\n我来帮他宣传一下，@弦生生\n涉及视频：av64645076",
+                "view_type": "",
+                "video_review": 1,
+                "is_pay": 0,
+                "favorites": 2,
+                "arcurl": "http:\u002F\u002Fwww.bilibili.com\u002Fvideo\u002Fav65211492",
+                "typeid": "171",
+                "author": "远古宋木头",
+                "hit_columns": ["title", "tag"],
+                "typename": "电子竞技",
+                "aid": 65211492,
+                "rec_tags": null
+            }, {
+                "new_rec_tags": [],
+                "pubdate": 1566305257,
+                "rank_offset": 25,
+                "tag": "魔性,QQ,原创,搞笑视频,逗比,恶搞",
+                "duration": "0:26",
+                "id": 64605037,
+                "rank_score": 101789457,
+                "badgepay": false,
+                "senddate": 1566448479,
+                "title": "在QQ找\u003Cem class=\"keyword\"\u003Elbw\u003C\u002Fem\u003E的QQ会出现什么",
+                "review": 0,
+                "mid": 314418129,
+                "is_union_video": 0,
+                "rank_index": 0,
+                "type": "video",
+                "arcrank": "0",
+                "play": 40,
+                "pic": "\u002F\u002Fi1.hdslb.com\u002Fbfs\u002Farchive\u002F82598f5bff09b3a51fbdb32f09ec5e04783f6ed9.jpg",
+                "description": "-",
+                "view_type": "",
+                "video_review": 0,
+                "is_pay": 0,
+                "favorites": 0,
+                "arcurl": "http:\u002F\u002Fwww.bilibili.com\u002Fvideo\u002Fav64605037",
+                "typeid": "138",
+                "author": "单手开枪",
+                "hit_columns": ["title"],
+                "typename": "搞笑",
+                "aid": 64605037,
+                "rec_tags": null
+            }, {
+                "new_rec_tags": [],
+                "pubdate": 1565525521,
+                "rank_offset": 26,
+                "tag": "芦苇,五五开,开挂,卢姥爷,土块",
+                "duration": "0:19",
+                "id": 63257797,
+                "rank_score": 101764729,
+                "badgepay": false,
+                "senddate": 1565525522,
+                "title": "这个视频叫做\u003Cem class=\"keyword\"\u003ELBW\u003C\u002Fem\u003E视频，祝姥爷生日快乐",
+                "review": 13,
+                "mid": 79075364,
+                "is_union_video": 0,
+                "rank_index": 0,
+                "type": "video",
+                "arcrank": "0",
+                "play": 621,
+                "pic": "\u002F\u002Fi0.hdslb.com\u002Fbfs\u002Farchive\u002F8613e2abc4798c22c92e6e6b35ed781ded9fc010.jpg",
+                "description": "-",
+                "view_type": "",
+                "video_review": 1,
+                "is_pay": 0,
+                "favorites": 2,
+                "arcurl": "http:\u002F\u002Fwww.bilibili.com\u002Fvideo\u002Fav63257797",
+                "typeid": "21",
+                "author": "残星太阳",
+                "hit_columns": ["title"],
+                "typename": "日常",
+                "aid": 63257797,
+                "rec_tags": null
+            }, {
+                "new_rec_tags": [],
+                "pubdate": 1566657672,
+                "rank_offset": 27,
+                "tag": "bilibili新星计划,电子竞技,csgo,刘坤",
+                "duration": "15:41",
+                "id": 65206208,
+                "rank_score": 101760602,
+                "badgepay": false,
+                "senddate": 1566899448,
+                "title": "刘坤看\u003Cem class=\"keyword\"\u003ELBW\u003C\u002Fem\u003E的csgo账号有多豪？s1mple pasha纪念龙驹、世界第一磨损的暗金皇帝+4连泰坦、蓝顶AK、全蓝爪。。我酸了",
+                "review": 518,
+                "mid": 43160785,
+                "is_union_video": 0,
+                "rank_index": 0,
+                "type": "video",
+                "arcrank": "0",
+                "play": 128169,
+                "pic": "\u002F\u002Fi1.hdslb.com\u002Fbfs\u002Farchive\u002F3579d9f4e08e343615576d8d9a9e491259421362.jpg",
+                "description": "……",
+                "view_type": "",
+                "video_review": 910,
+                "is_pay": 0,
+                "favorites": 1035,
+                "arcurl": "http:\u002F\u002Fwww.bilibili.com\u002Fvideo\u002Fav65206208",
+                "typeid": "171",
+                "author": "F4ding",
+                "hit_columns": ["title"],
+                "typename": "电子竞技",
+                "aid": 65206208,
+                "rec_tags": null
+            }, {
+                "new_rec_tags": [],
+                "pubdate": 1568280383,
+                "rank_offset": 28,
+                "tag": "全能打卡挑战,五五开,pdd,鬼畜剧,张大仙,药水哥,李云龙,复仇者联盟,漫威,旭旭宝宝",
+                "duration": "9:3",
+                "id": 67465600,
+                "rank_score": 101745408,
+                "badgepay": false,
+                "senddate": 1568280383,
+                "title": "《复仇者联盟三：无限战争》鬼畜明星的集结。国产版最燃。张大仙\u002F旭旭宝宝\u002F\u003Cem class=\"keyword\"\u003Elbw\u003C\u002Fem\u003E\u002Fpdd\u002F李云龙\u002F韩红\u002F乔碧罗\u002F周淑怡\u002F杨超越等倾情出演",
+                "review": 11,
+                "mid": 429981789,
+                "is_union_video": 0,
+                "rank_index": 0,
+                "type": "video",
+                "arcrank": "0",
+                "play": 902,
+                "pic": "\u002F\u002Fi2.hdslb.com\u002Fbfs\u002Farchive\u002F7fee83217c7fb38583872d8e5657220a30577ad1.jpg",
+                "description": "取材自《复仇者联盟三：无限战争》张大仙\u002F奇异博士  李云龙\u002F钢铁侠   pdd\u002F雷神  旭旭宝宝\u002F冬兵   韩红\u002F黑寡妇   杨超越\u002F螳螂女  lbw\u002F美国队长   小岳岳\u002F黑豹     六小龄童\u002F蜘蛛侠   孙笑川\u002F灭霸   茄子\u002F火箭   周淑怡\u002F绯红女巫    药水哥\u002F星爵   等等等    几十个鬼畜明星联合出演。漫威系列目前已经出了复仇者的一 三 四 。做的视频越来越久，追求的层次也越来越高。成绩都不是很理想 希望大家能提出建议。花了好久时间制作 希望大家喜欢！求三连  审核大大辛苦了",
+                "view_type": "",
+                "video_review": 41,
+                "is_pay": 0,
+                "favorites": 36,
+                "arcurl": "http:\u002F\u002Fwww.bilibili.com\u002Fvideo\u002Fav67465600",
+                "typeid": "22",
+                "author": "扫地僧fz",
+                "hit_columns": ["title", "description"],
+                "typename": "鬼畜调教",
+                "aid": 67465600,
+                "rec_tags": null
+            }, {
+                "new_rec_tags": [],
+                "pubdate": 1478918730,
+                "rank_offset": 29,
+                "tag": "VOCALOID中文翻唱,VOCALOID",
+                "duration": "3:15",
+                "id": 7061022,
+                "rank_score": 101684946,
+                "badgepay": false,
+                "senddate": 1542121548,
+                "title": "【洛天依言和】我们好像在哪见过【\u003Cem class=\"keyword\"\u003ELBW\u003C\u002Fem\u003E】",
+                "review": 9,
+                "mid": 7576925,
+                "is_union_video": 0,
+                "rank_index": 0,
+                "type": "video",
+                "arcrank": "0",
+                "play": 592,
+                "pic": "\u002F\u002Fi0.hdslb.com\u002Fbfs\u002Farchive\u002F8bb3d2d11d1954074a905216fe436f1a6e147143.jpg",
+                "description": "【我们好像在哪见过】 原唱:杨宗纬 叶蓓 词曲:小柯  翻唱:洛天依 言和 调:LBW\n写不出词 只好随便调着玩了。  有没有人来合作下啊",
+                "view_type": "",
+                "video_review": 7,
+                "is_pay": 0,
+                "favorites": 8,
+                "arcurl": "http:\u002F\u002Fwww.bilibili.com\u002Fvideo\u002Fav7061022",
+                "typeid": "30",
+                "author": "何生LiBw",
+                "hit_columns": ["title", "description"],
+                "typename": "VOCALOID·UTAU",
+                "aid": 7061022,
+                "rec_tags": null
+            }, {
+                "new_rec_tags": [],
+                "pubdate": 1566073335,
+                "rank_offset": 30,
+                "tag": "wdnmd",
+                "duration": "0:4",
+                "id": 64210363,
+                "rank_score": 101683933,
+                "badgepay": false,
+                "senddate": 1567687130,
+                "title": "\u003Cem class=\"keyword\"\u003Elbw\u003C\u002Fem\u003E强势复出",
+                "review": 5,
+                "mid": 360307546,
+                "is_union_video": 0,
+                "rank_index": 0,
+                "type": "video",
+                "arcrank": "0",
+                "play": 142,
+                "pic": "\u002F\u002Fi2.hdslb.com\u002Fbfs\u002Farchive\u002Fb0c4bc32127056ac23f90043927ebfe8095bab89.jpg",
+                "description": "-",
+                "view_type": "",
+                "video_review": 0,
+                "is_pay": 0,
+                "favorites": 0,
+                "arcurl": "http:\u002F\u002Fwww.bilibili.com\u002Fvideo\u002Fav64210363",
+                "typeid": "138",
+                "author": "苏白Evan",
+                "hit_columns": ["title"],
+                "typename": "搞笑",
+                "aid": 64210363,
+                "rec_tags": null
+            }, {
+                "new_rec_tags": [],
+                "pubdate": 1564301724,
+                "rank_offset": 31,
+                "tag": "bilibili新星计划,蔡虚鲲,搞笑,LBW",
+                "duration": "1:47",
+                "id": 61128068,
+                "rank_score": 101642184,
+                "badgepay": false,
+                "senddate": 1564895389,
+                "title": "鬼畜\u003Cem class=\"keyword\"\u003ELBW\u003C\u002Fem\u003E",
+                "review": 2,
+                "mid": 312982918,
+                "is_union_video": 0,
+                "rank_index": 0,
+                "type": "video",
+                "arcrank": "0",
+                "play": 682,
+                "pic": "\u002F\u002Fi1.hdslb.com\u002Fbfs\u002Farchive\u002F1554f1b5a68647b80a603907f5267504947d59c8.jpg",
+                "description": "【點贊、投幣、關注】",
+                "view_type": "",
+                "video_review": 1,
+                "is_pay": 0,
+                "favorites": 1,
+                "arcurl": "http:\u002F\u002Fwww.bilibili.com\u002Fvideo\u002Fav61128068",
+                "typeid": "126",
+                "author": "w这名字woc",
+                "hit_columns": ["title", "tag"],
+                "typename": "人力VOCALOID",
+                "aid": 61128068,
+                "rec_tags": null
+            }, {
+                "new_rec_tags": [],
+                "pubdate": 1562739294,
+                "rank_offset": 32,
+                "tag": "欢乐斗地主",
+                "duration": "0:4",
+                "id": 58592246,
+                "rank_score": 101638259,
+                "badgepay": false,
+                "senddate": 1562739294,
+                "title": "\u003Cem class=\"keyword\"\u003Elbw\u003C\u002Fem\u003E没想到是个慈善家",
+                "review": 0,
+                "mid": 321400135,
+                "is_union_video": 0,
+                "rank_index": 0,
+                "type": "video",
+                "arcrank": "0",
+                "play": 110,
+                "pic": "\u002F\u002Fi1.hdslb.com\u002Fbfs\u002Farchive\u002F408f27e50b40cec4e3e6e96ba373ed955d3e1670.jpg",
+                "description": "-",
+                "view_type": "",
+                "video_review": 0,
+                "is_pay": 0,
+                "favorites": 0,
+                "arcurl": "http:\u002F\u002Fwww.bilibili.com\u002Fvideo\u002Fav58592246",
+                "typeid": "174",
+                "author": "蓝洞人-泍纬",
+                "hit_columns": ["title"],
+                "typename": "其他",
+                "aid": 58592246,
+                "rec_tags": null
+            }, {
+                "new_rec_tags": [],
+                "pubdate": 1565502720,
+                "rank_offset": 33,
+                "tag": "五五开,WHITE,UU,55开,卢姥爷,生日快乐,电子竞技",
+                "duration": "5:29",
+                "id": 63188767,
+                "rank_score": 101579530,
+                "badgepay": false,
+                "senddate": 1565502720,
+                "title": "\u003Cem class=\"keyword\"\u003Elbw\u003C\u002Fem\u003E牛逼！26岁生日快乐！永远的开哥",
+                "review": 14,
+                "mid": 51488427,
+                "is_union_video": 0,
+                "rank_index": 0,
+                "type": "video",
+                "arcrank": "0",
+                "play": 1638,
+                "pic": "\u002F\u002Fi1.hdslb.com\u002Fbfs\u002Farchive\u002F1e9f002d14d34ca12c047e1f17e82553cc3d36a3.jpg",
+                "description": "lbw牛逼",
+                "view_type": "",
+                "video_review": 8,
+                "is_pay": 0,
+                "favorites": 8,
+                "arcurl": "http:\u002F\u002Fwww.bilibili.com\u002Fvideo\u002Fav63188767",
+                "typeid": "21",
+                "author": "科比解说",
+                "hit_columns": ["title", "description"],
+                "typename": "日常",
+                "aid": 63188767,
+                "rec_tags": null
+            }, {
+                "new_rec_tags": [],
+                "pubdate": 1564212863,
+                "rank_offset": 34,
+                "tag": "吃鸡,第一视角,仓鼠,游戏视频",
+                "duration": "7:41",
+                "id": 60983259,
+                "rank_score": 101514334,
+                "badgepay": false,
+                "senddate": 1567266291,
+                "title": "仓鼠直播扬言：\u003Cem class=\"keyword\"\u003Elbw\u003C\u002Fem\u003E给我500万我当\u003Cem class=\"keyword\"\u003Elbw\u003C\u002Fem\u003E的狗。",
+                "review": 20,
+                "mid": 37720706,
+                "is_union_video": 0,
+                "rank_index": 0,
+                "type": "video",
+                "arcrank": "0",
+                "play": 854,
+                "pic": "\u002F\u002Fi2.hdslb.com\u002Fbfs\u002Farchive\u002F68ab208739156e093424d70564397e304c1c35e3.jpg",
+                "description": "露出爪牙4分20秒",
+                "view_type": "",
+                "video_review": 3,
+                "is_pay": 0,
+                "favorites": 1,
+                "arcurl": "http:\u002F\u002Fwww.bilibili.com\u002Fvideo\u002Fav60983259",
+                "typeid": "65",
+                "author": "群雄日记",
+                "hit_columns": ["title"],
+                "typename": "网络游戏",
+                "aid": 60983259,
+                "rec_tags": null
+            }, {
+                "new_rec_tags": [],
+                "pubdate": 1533355247,
+                "rank_offset": 35,
+                "tag": "VLOG,小巫,BW,BML,日常",
+                "duration": "6:32",
+                "id": 28468485,
+                "rank_score": 101490187,
+                "badgepay": false,
+                "senddate": 1533355253,
+                "title": "l vlog \u003Cem class=\"keyword\"\u003ElBW\u003C\u002Fem\u003E+BML后台花絮全纪录",
+                "review": 69,
+                "mid": 2691287,
+                "is_union_video": 0,
+                "rank_index": 0,
+                "type": "video",
+                "arcrank": "0",
+                "play": 12518,
+                "pic": "\u002F\u002Fi0.hdslb.com\u002Fbfs\u002Farchive\u002F3426d581f261de5424d3a201bec49994234d5aab.jpg",
+                "description": "肥肠宝贵的一次经历当然要记录下来o(*￣▽￣*)o",
+                "view_type": "",
+                "video_review": 100,
+                "is_pay": 0,
+                "favorites": 169,
+                "arcurl": "http:\u002F\u002Fwww.bilibili.com\u002Fvideo\u002Fav28468485",
+                "typeid": "21",
+                "author": "小巫酱w",
+                "hit_columns": ["title"],
+                "typename": "日常",
+                "aid": 28468485,
+                "rec_tags": null
+            }, {
+                "new_rec_tags": [],
+                "pubdate": 1558436817,
+                "rank_offset": 36,
+                "tag": "动物",
+                "duration": "0:7",
+                "id": 53175725,
+                "rank_score": 101472011,
+                "badgepay": false,
+                "senddate": 1558803464,
+                "title": "\u003Cem class=\"keyword\"\u003Elbw\u003C\u002Fem\u003E",
+                "review": 0,
+                "mid": 236423009,
+                "is_union_video": 0,
+                "rank_index": 0,
+                "type": "video",
+                "arcrank": "0",
+                "play": 105,
+                "pic": "\u002F\u002Fi0.hdslb.com\u002Fbfs\u002Farchive\u002F3368d28b9d77cd09e6ff395c2a40a5e71ae19b1c.jpg",
+                "description": "-",
+                "view_type": "",
+                "video_review": 0,
+                "is_pay": 0,
+                "favorites": 0,
+                "arcurl": "http:\u002F\u002Fwww.bilibili.com\u002Fvideo\u002Fav53175725",
+                "typeid": "75",
+                "author": "白羽的裁决",
+                "hit_columns": ["title"],
+                "typename": "动物圈",
+                "aid": 53175725,
+                "rec_tags": null
+            }, {
+                "new_rec_tags": [],
+                "pubdate": 1564895331,
+                "rank_offset": 37,
+                "tag": "bilibili新星计划,欢乐斗地主,桌游棋牌,斗地主,日常,超级慈善",
+                "duration": "1:17",
+                "id": 62143975,
+                "rank_score": 101455418,
+                "badgepay": false,
+                "senddate": 1565969902,
+                "title": "和赌怪\u003Cem class=\"keyword\"\u003Elbw\u003C\u002Fem\u003E打牌的感觉是什么样的？一起慈善！",
+                "review": 3,
+                "mid": 432440580,
+                "is_union_video": 0,
+                "rank_index": 0,
+                "type": "video",
+                "arcrank": "0",
+                "play": 291,
+                "pic": "\u002F\u002Fi0.hdslb.com\u002Fbfs\u002Farchive\u002F86eac55387a4d59ea94fd60fbee264c21dfc97fd.jpg",
+                "description": "-",
+                "view_type": "",
+                "video_review": 8,
+                "is_pay": 0,
+                "favorites": 1,
+                "arcurl": "http:\u002F\u002Fwww.bilibili.com\u002Fvideo\u002Fav62143975",
+                "typeid": "173",
+                "author": "万能天皇",
+                "hit_columns": ["title"],
+                "typename": "桌游棋牌",
+                "aid": 62143975,
+                "rec_tags": null
+            }, {
+                "new_rec_tags": [],
+                "pubdate": 1568368151,
+                "rank_offset": 38,
+                "tag": "全能打卡挑战,PDD,元首,孙笑川,带带大师兄,卢本伟,乔碧萝,鬼畜,鬼畜剧",
+                "duration": "3:35",
+                "id": 67592562,
+                "rank_score": 101338251,
+                "badgepay": false,
+                "senddate": 1568368152,
+                "title": "【惊魂之旅】第一集 当pdd和\u003Cem class=\"keyword\"\u003Elbw\u003C\u002Fem\u003E遇上孙笑川和乔碧萝",
+                "review": 7,
+                "mid": 2973218,
+                "is_union_video": 0,
+                "rank_index": 0,
+                "type": "video",
+                "arcrank": "0",
+                "play": 799,
+                "pic": "\u002F\u002Fi0.hdslb.com\u002Fbfs\u002Farchive\u002Ff046c3cd8f418f3726ff198c60c4854867a376e5.jpg",
+                "description": "pdd、lbw和孙笑川、乔碧萝等联合出演，元首、华农兄弟和游乐王子等鬼畜明星友情客串。\n之前出了点问题，所以又重新投了一遍。喜欢的话，记得点赞哦。",
+                "view_type": "",
+                "video_review": 18,
+                "is_pay": 0,
+                "favorites": 11,
+                "arcurl": "http:\u002F\u002Fwww.bilibili.com\u002Fvideo\u002Fav67592562",
+                "typeid": "22",
+                "author": "有了梦想的咸鱼",
+                "hit_columns": ["title", "description"],
+                "typename": "鬼畜调教",
+                "aid": 67592562,
+                "rec_tags": null
+            }, {
+                "new_rec_tags": [],
+                "pubdate": 1479377232,
+                "rank_offset": 39,
+                "tag": "VOCALOID,VOCALOID中文曲,言和翻唱曲",
+                "duration": "4:18",
+                "id": 7135962,
+                "rank_score": 101336857,
+                "badgepay": false,
+                "senddate": 1542121548,
+                "title": "【言和】逍遥【\u003Cem class=\"keyword\"\u003ELBW\u003C\u002Fem\u003E】",
+                "review": 11,
+                "mid": 7576925,
+                "is_union_video": 0,
+                "rank_index": 0,
+                "type": "video",
+                "arcrank": "0",
+                "play": 331,
+                "pic": "\u002F\u002Fi0.hdslb.com\u002Fbfs\u002Farchive\u002F9a5b9341d03a26bec87c825267a9c57d0c126a76.jpg",
+                "description": "自制\n【逍遥】 原唱:霍建华 作曲:谭璇 作词:于正  翻唱:言和 调:LBW",
+                "view_type": "",
+                "video_review": 4,
+                "is_pay": 0,
+                "favorites": 6,
+                "arcurl": "http:\u002F\u002Fwww.bilibili.com\u002Fvideo\u002Fav7135962",
+                "typeid": "30",
+                "author": "何生LiBw",
+                "hit_columns": ["title", "description"],
+                "typename": "VOCALOID·UTAU",
+                "aid": 7135962,
+                "rec_tags": null
+            }, {
+                "new_rec_tags": [],
+                "pubdate": 1554427653,
+                "rank_offset": 40,
+                "tag": "电子竞技,CSGO,游戏视频,精彩集锦,WDNMD,CSGO视频",
+                "duration": "0:8",
+                "id": 48321974,
+                "rank_score": 101331458,
+                "badgepay": false,
+                "senddate": 1554427653,
+                "title": "放慢数倍之后，我\u003Cem class=\"keyword\"\u003ELBW\u003C\u002Fem\u003E没有开挂",
+                "review": 3,
+                "mid": 167871815,
+                "is_union_video": 0,
+                "rank_index": 0,
+                "type": "video",
+                "arcrank": "0",
+                "play": 1688,
+                "pic": "\u002F\u002Fi2.hdslb.com\u002Fbfs\u002Farchive\u002F9f085e742b5cd3d9fcf190a7e94976bea5cdc7c7.jpg",
+                "description": "",
+                "view_type": "",
+                "video_review": 1,
+                "is_pay": 0,
+                "favorites": 0,
+                "arcurl": "http:\u002F\u002Fwww.bilibili.com\u002Fvideo\u002Fav48321974",
+                "typeid": "171",
+                "author": "当年明月_",
+                "hit_columns": ["title"],
+                "typename": "电子竞技",
+                "aid": 48321974,
+                "rec_tags": null
+            }],
+            "noMore": false,
+            "nothing": false,
+            "loading": false,
+            "fetched": true,
+            "error": null,
+            "extra": {
+                "seid": "5995185665212719775",
+                "page": 2,
+                "pagesize": 20,
+                "numResults": 359,
+                "numPages": 18,
+                "suggest_keyword": "",
+                "rqt_type": "search",
+                "cost_time": {
+                    "params_check": "0.000294",
+                    "illegal_handler": "0.000080",
+                    "as_response_format": "0.003177",
+                    "as_request": "0.024365",
+                    "save_cache": "0.000788",
+                    "deserialize_response": "0.000283",
+                    "as_request_format": "0.000333",
+                    "total": "0.029593",
+                    "main_handler": "0.028338"
+                },
+                "exp_list": null,
+                "egg_hit": 0,
+                "show_column": 0,
+                "isSingle": true
+            },
+            "page": 2,
+            "total": 359
+        }
+    }
+};
+(function () {
+    var s;
+    (s = document.currentScript || document.scripts[document.scripts.length - 1]).parentNode.removeChild(s);
+}());</script>
+<script src="//s1.hdslb.com/bfs/static/jinkela/search/1.search.e152130d18e3a819eeec601dcd2ca0c54499df9d.js"
+        defer></script>
+<script src="//s1.hdslb.com/bfs/static/jinkela/search/search.e152130d18e3a819eeec601dcd2ca0c54499df9d.js"
+        defer></script><!-- built files will be auto injected -->
+<div class="footer bili-footer report-wrap-module"></div>
+<script type="text/javascript">function getCookie(e) {
+    var d = new RegExp("(^| )" + e + "=([^;]*)(;|$)"), o = document.cookie.match(d);
+    return o ? unescape(o[2]) : null
+}
+
+function loadScript(e, d) {
+    var o = document.createElement("script");
+    o.src = e, o.onload = function () {
+        d && d()
+    }, document.body.appendChild(o)
+}
+
+var header_url = "1" === getCookie("INTVER") ? "//s1.hdslb.com/bfs/seed/jinkela/header-v2/header.js" : "//s1.hdslb.com/bfs/seed/jinkela/header/header.js";
+loadScript(header_url)</script>
+<script type="text/javascript" src="//s1.hdslb.com/bfs/seed/jinkela/footer-v2/footer.js" defer="defer"></script>
+</body>
+</html>

@@ -104,6 +104,7 @@ public class AnimalPagesBeanToVideoBean extends AbstractLinkedListableProcessor<
             abstractVideoBean.setName(fileName);
             abstractVideoBean.setUrl(animalPagesBean.getUrl());
             return abstractVideoBean;
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

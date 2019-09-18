@@ -13,7 +13,7 @@ public class AnimalPageInfoParser implements Parser<AnimalPagesBean> {
     private static final String PREFIX = "window.__INITIAL_STATE__=";
     @Override
     public boolean check(String url) {
-        return Pattern.compile(":https://www.bilibili.com/bangumi/play/ep\\d+").matcher(url).matches();
+        return Pattern.compile("https://www.bilibili.com/bangumi/play/\\w+\\d+").matcher(url).matches();
     }
 
     @Override

@@ -1,7 +1,10 @@
 package liusheng.main.app.bilibili.space;
 
 import com.google.gson.Gson;
+import liusheng.main.app.bilibili.AvDownloader;
 import liusheng.main.app.bilibili.Types;
+import liusheng.main.app.bilibili.donwload.DefaultDownloader;
+import liusheng.main.app.bilibili.listener.DownloadSpeedListener;
 import liusheng.main.app.bilibili.parser.PageInfoParser;
 import liusheng.main.app.bilibili.util.ConnectionUtils;
 import liusheng.main.download.Downloader;
@@ -17,7 +20,8 @@ public class SpaceDownloader implements Downloader {
     //https://space.bilibili.com/ajax/member/getSubmitVideos?mid=161419374&pagesize=30&tid=0&page=1&keyword=&order=pubdate
     private final String dir;
     public static final String HTTPS_SPACE_BILIBILI_COM = "https://space.bilibili.com/";
-    private static Pattern patten = Pattern.compile(HTTPS_SPACE_BILIBILI_COM + "\\d+/video.*");
+    public static final String VIDEO = "/video";
+    private static Pattern patten = Pattern.compile(HTTPS_SPACE_BILIBILI_COM + "\\d+" + VIDEO + ".*");
 
     public SpaceDownloader(String dir) {
         this.dir = dir;
@@ -26,7 +30,14 @@ public class SpaceDownloader implements Downloader {
     // https://space.bilibili.com/ajax/member/getSubmitVideos?mid=161419374&pagesize=30&tid=0&page=1&keyword=&order=pubdate
     @Override
     public void download(String url) throws Throwable {
+        // 如果是空间号
+        if (url.matches("\\d+")) {
+            // 拼成 url
+             url =  HTTPS_SPACE_BILIBILI_COM + url + VIDEO;
+        }
+
         if (!patten.matcher(url).matches()) throw new IllegalArgumentException();
+
 
         String id = url.substring(HTTPS_SPACE_BILIBILI_COM.length(), url.indexOf("/", HTTPS_SPACE_BILIBILI_COM.length()));
 
@@ -40,6 +51,9 @@ public class SpaceDownloader implements Downloader {
 
         int pages = spaceEntity.getData().getPages();
 
+        AvDownloader avDownloader = new AvDownloader();
+        avDownloader
+                .start(new DefaultDownloader(),new DownloadSpeedListener());
 
         List<String> list = IntStream.rangeClosed(1, pages).boxed().flatMap(i -> {
             spaceParam.setPage(String.valueOf(i));
@@ -50,7 +64,15 @@ public class SpaceDownloader implements Downloader {
             }
 
         }).collect(Collectors.toList());
-        Types.completelyAVAll(list, dir);
+
+
+        list.forEach(u-> {
+            try {
+                avDownloader.getWorks().put(u);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
 
     }
 
