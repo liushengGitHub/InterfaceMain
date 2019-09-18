@@ -34,6 +34,7 @@ public class DefaultPipeline implements Pipeline<DefaultPipeline> {
         protected void doProcess(Object o, List<Object> returnData) throws Throwable {
             returnData.add(o);
         }
+
     }
 
     private final Node head = new Node("HEAD", new HeadProcessor());

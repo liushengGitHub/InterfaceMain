@@ -25,6 +25,7 @@ public class ClosableFixedThreadPoolExecutor extends ScheduledThreadPoolExecutor
         this.scheduleAtFixedRate(() -> {
             FailTask runnable = null;
             try {
+                logger.info("队列的数量是 :" + queue.size() + "=" + System.identityHashCode(queue));
                 runnable = queue.poll();
                 if (Objects.nonNull(runnable) && runnable.getCount() < FailTask.COUNT) {
                     // 自增计数一下

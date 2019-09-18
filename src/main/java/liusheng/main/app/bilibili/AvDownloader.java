@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * 单例模式
  */
 public class AvDownloader {
-    private static AvDownloader donwloader;
+    private static AvDownloader donwloader = new AvDownloader();
     private final BlockingQueue<String> works = new LinkedBlockingQueue<>(1000);
     private String dir = "e:\\hello";
     private final AtomicBoolean start = new AtomicBoolean(false);
@@ -23,12 +23,13 @@ public class AvDownloader {
     public boolean isStart() {
         return start.get();
     }
+
     public BlockingQueue<String> getWorks() {
         return works;
     }
 
     public static synchronized AvDownloader getInstance() {
-        return new AvDownloader();
+        return donwloader;
     }
 
     public void start(RetryDownloader.DownloaderController controller, DownloadSpeedListener... listeners) {
