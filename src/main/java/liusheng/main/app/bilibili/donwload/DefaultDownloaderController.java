@@ -3,7 +3,7 @@ package liusheng.main.app.bilibili.donwload;
 /**
  * 只能在一个线程调用
  */
-public class DefaultDownloader implements RetryDownloader.DownloaderController {
+public class DefaultDownloaderController implements RetryDownloader.DownloaderController {
 
     private volatile boolean cancel = false;
     private volatile boolean pause = false;

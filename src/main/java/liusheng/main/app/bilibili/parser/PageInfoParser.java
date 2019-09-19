@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 public class PageInfoParser implements Parser<PagesBean> {
     //                                                           http://www.bilibili.com/video/av67748053
     public static final String HTTPS_WWW_BILIBILI_COM_VIDEO_AV ="https://www.bilibili.com/video/av" ;
-    private static final Pattern CHECK = Pattern.compile("https?://www.bilibili.com/video/av\\d+");
+    public static final Pattern CHECK = Pattern.compile("https?://www.bilibili.com/video/av\\d+");
     private static final String PREFIX = "window.__INITIAL_STATE__=";
 
     static Logger logger = Logger.getLogger(PageInfoParser.class);

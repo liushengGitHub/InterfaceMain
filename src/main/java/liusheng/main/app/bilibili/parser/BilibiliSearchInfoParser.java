@@ -1,7 +1,8 @@
-package liusheng.main.app.bilibili;
+package liusheng.main.app.bilibili.parser;
 
 import com.google.gson.*;
-import liusheng.main.app.bilibili.parser.Parser;
+import liusheng.main.app.bilibili.entity.search.SearchJson;
+import liusheng.main.app.bilibili.entity.search.SearchJson1;
 import liusheng.main.app.bilibili.util.ConnectionUtils;
 import org.apache.log4j.Logger;
 import org.jsoup.Connection;
@@ -9,17 +10,16 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class SearchInfoParser implements Parser<Object> {
+public class BilibiliSearchInfoParser implements Parser<Object> {
     //https://search.bilibili.com/all?keyword=lbw
     public static final String HTTPS_WWW_BILIBILI_COM_VIDEO_AV = "https://search\\.bilibili\\.com/all\\?keyword=";
     private static final Pattern CHECK = Pattern.compile(HTTPS_WWW_BILIBILI_COM_VIDEO_AV + ".*");
     private static final String PREFIX = "window.__INITIAL_STATE__=";
 
-    static Logger logger = Logger.getLogger(SearchInfoParser.class);
+    static Logger logger = Logger.getLogger(BilibiliSearchInfoParser.class);
 
     @Override
     public boolean check(String url) {

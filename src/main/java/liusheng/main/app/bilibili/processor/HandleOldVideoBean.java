@@ -1,7 +1,7 @@
 package liusheng.main.app.bilibili.processor;
 
-import liusheng.main.app.bilibili.ThreadSafe;
-import liusheng.main.app.bilibili.donwload.DefaultDownloader;
+import liusheng.main.annotation.ThreadSafe;
+import liusheng.main.app.bilibili.donwload.DefaultDownloaderController;
 import liusheng.main.app.bilibili.donwload.RetryDownloader;
 import liusheng.main.app.bilibili.entity.DownloadEntity;
 import liusheng.main.app.bilibili.entity.OldVideoBean;
@@ -62,7 +62,7 @@ public class HandleOldVideoBean extends AbstractLinkedListableProcessor<OldVideo
 
                                 paths.add(filePath.toString());
 
-                                RetryDownloader retryDownloader = new RetryDownloader(controller, new DefaultDownloader());
+                                RetryDownloader retryDownloader = new RetryDownloader(controller, new DefaultDownloaderController());
                                 retryDownloader.getDownloaderListeners().addAll(downloaderListeners);
                                 retryDownloader.process(new DownloadEntity(refererUrl, videoUrl, backup_url, filePath, dirPath, retry));
 

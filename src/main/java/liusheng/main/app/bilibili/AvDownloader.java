@@ -1,11 +1,11 @@
 package liusheng.main.app.bilibili;
 
+import liusheng.main.app.adapter.PipelineSelector;
 import liusheng.main.app.bilibili.donwload.RetryDownloader;
+import liusheng.main.app.bilibili.executor.ClosableFixedThreadPoolExecutor;
+import liusheng.main.app.bilibili.executor.FailListExecutorService;
 import liusheng.main.app.bilibili.listener.DownloadSpeedListener;
-import liusheng.main.app.bilibili.processor.ListVideoBeanToDisk;
-import liusheng.main.app.bilibili.processor.av.PagesBeanToVideoBean;
-import liusheng.main.app.bilibili.processor.av.UrlToPagesBean;
-import liusheng.main.pipeline.DefaultPipeline;
+import liusheng.main.pipeline.Pipeline;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -19,6 +19,7 @@ public class AvDownloader {
     private final BlockingQueue<String> works = new LinkedBlockingQueue<>(1000);
     private String dir = "e:\\hello";
     private final AtomicBoolean start = new AtomicBoolean(false);
+    private PipelineSelector selector;
 
     public boolean isStart() {
         return start.get();
@@ -28,22 +29,21 @@ public class AvDownloader {
         return works;
     }
 
-    public static synchronized AvDownloader getInstance() {
+    public static AvDownloader getInstance() {
         return donwloader;
     }
 
-    public void start(RetryDownloader.DownloaderController controller, DownloadSpeedListener... listeners) {
+    public void start(RetryDownloader.DownloaderController controller, FailListExecutorService failListExecutorService, DownloadSpeedListener... listeners) {
         if (start.compareAndSet(false, true)) {
+            selector = new DefaultPipelineSelector(dir, controller, listeners,failListExecutorService.failTaskQueue());
             new Thread(() -> {
-                DefaultPipeline defaultPipeline = new DefaultPipeline();
-                defaultPipeline.addLast(new UrlToPagesBean());
-                defaultPipeline.addLast(new PagesBeanToVideoBean(dir));
-                defaultPipeline.addLast(new ListVideoBeanToDisk(controller, listeners));
-
                 while (!Thread.currentThread().isInterrupted()) {
                     try {
                         String url = works.take();
-                        defaultPipeline.processor(url);
+                        Pipeline pipeline = selector.select(url);
+                        if (pipeline != null) {
+                            pipeline.processor(url);
+                        }
                     } catch (Throwable e) {
                         e.printStackTrace();
                     }

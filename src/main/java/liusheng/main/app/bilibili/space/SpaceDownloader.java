@@ -2,8 +2,7 @@ package liusheng.main.app.bilibili.space;
 
 import com.google.gson.Gson;
 import liusheng.main.app.bilibili.AvDownloader;
-import liusheng.main.app.bilibili.Types;
-import liusheng.main.app.bilibili.donwload.DefaultDownloader;
+import liusheng.main.app.bilibili.donwload.DefaultDownloaderController;
 import liusheng.main.app.bilibili.listener.DownloadSpeedListener;
 import liusheng.main.app.bilibili.parser.PageInfoParser;
 import liusheng.main.app.bilibili.util.ConnectionUtils;
@@ -52,8 +51,8 @@ public class SpaceDownloader implements Downloader {
         int pages = spaceEntity.getData().getPages();
 
         AvDownloader avDownloader = new AvDownloader();
-        avDownloader
-                .start(new DefaultDownloader(),new DownloadSpeedListener());
+       /* avDownloader
+                .start(new DefaultDownloaderController(),new DownloadSpeedListener());*/
 
         List<String> list = IntStream.rangeClosed(1, pages).boxed().flatMap(i -> {
             spaceParam.setPage(String.valueOf(i));

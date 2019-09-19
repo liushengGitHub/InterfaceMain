@@ -1,19 +1,12 @@
 package liusheng.main.app.bilibili.processor.av;
 
-import liusheng.main.app.bilibili.ThreadSafe;
-import liusheng.main.app.bilibili.adapter.AdapterParam;
-import liusheng.main.app.bilibili.adapter.DefaultParserAdapter;
-import liusheng.main.app.bilibili.adapter.ParserAdapter;
-import liusheng.main.app.bilibili.entity.AbstractVideoBean;
+import liusheng.main.annotation.ThreadSafe;
 import liusheng.main.app.bilibili.entity.av.AllPageBean;
 import liusheng.main.app.bilibili.entity.av.PagesBean;
-import liusheng.main.app.bilibili.executor.ClosableFixedThreadPoolExecutor;
-import liusheng.main.app.bilibili.executor.FailListExecutorService;
+import liusheng.main.app.bilibili.executor.BilibiliTask;
 import liusheng.main.app.bilibili.executor.FailTask;
 import liusheng.main.app.bilibili.util.StringUtils;
-import liusheng.main.pipeline.Pipeline;
 import liusheng.main.process.AbstractLinkedListableProcessor;
-import liusheng.main.process.AbstractLinkedProcessor;
 import org.apache.log4j.Logger;
 
 import java.io.File;
@@ -66,12 +59,11 @@ public class PagesBeanToVideoBean extends AbstractLinkedListableProcessor<PagesB
 
                 try {
                     // 获取视频的索引
-                    executorService.execute(new FailTask(pages, page, dirFile, nextProcessor(), pageBeanList.size()));
-
+                    executorService.execute(new FailTask(
+                            new BilibiliTask(pages, page, dirFile, nextProcessor(), pageBeanList.size())));
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
-
             });
 
         } catch (Throwable t) {

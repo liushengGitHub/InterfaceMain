@@ -1,13 +1,12 @@
 package liusheng.main.app.bilibili.processor;
 
-import liusheng.main.app.bilibili.ThreadSafe;
+import liusheng.main.annotation.ThreadSafe;
 import liusheng.main.app.bilibili.donwload.RetryDownloader;
 import liusheng.main.app.bilibili.entity.AbstractVideoBean;
 import liusheng.main.app.bilibili.entity.NewVideoBean;
 import liusheng.main.app.bilibili.entity.OldVideoBean;
 import liusheng.main.app.bilibili.executor.ClosableFixedThreadPoolExecutor;
 import liusheng.main.app.bilibili.executor.FailListExecutorService;
-import liusheng.main.app.bilibili.executor.FailTask;
 import liusheng.main.pipeline.Pipeline;
 import liusheng.main.process.AbstractLinkedListableProcessor;
 import org.apache.log4j.Logger;
@@ -23,7 +22,7 @@ public class ListVideoBeanToDisk extends AbstractLinkedListableProcessor<Object,
     private final RetryDownloader.DownloaderController controller;
     private final List<RetryDownloader.DownloaderListener> listeners = new LinkedList<>();
     private final Logger logger = Logger.getLogger(ListVideoBeanToDisk.class);
-    private ClosableFixedThreadPoolExecutor stepExecutorService;
+    private final ClosableFixedThreadPoolExecutor stepExecutorService;
     private HandleNewVideoBean handleNewVideoBean;
     private HandleOldVideoBean handleOldVideoBean;
 
@@ -34,13 +33,7 @@ public class ListVideoBeanToDisk extends AbstractLinkedListableProcessor<Object,
     @Override
     public void setPipeline(Pipeline pipeline) {
         super.setPipeline(pipeline);
-        ExecutorService executorService = pipeline().getExecutorService();
-        if (executorService instanceof FailListExecutorService) {
-            FailListExecutorService failListExecutorService = (FailListExecutorService) executorService;
-            stepExecutorService = new ClosableFixedThreadPoolExecutor(failListExecutorService.failTaskQueue());
-        } else {
-            stepExecutorService = new ClosableFixedThreadPoolExecutor();
-        }
+
         /**
          *
          * 因为者两个对象是线程安全的,所有可用提取出来
@@ -48,8 +41,9 @@ public class ListVideoBeanToDisk extends AbstractLinkedListableProcessor<Object,
         handleNewVideoBean = new HandleNewVideoBean(this.listeners, stepExecutorService, 3, semaphore, controller);
         handleOldVideoBean = new HandleOldVideoBean(this.listeners, 3, semaphore, controller);
     }
-    public ListVideoBeanToDisk(RetryDownloader.DownloaderController controller, RetryDownloader.DownloaderListener... listeners) {
+    public ListVideoBeanToDisk(RetryDownloader.DownloaderController controller,ClosableFixedThreadPoolExecutor stepExecutorService, RetryDownloader.DownloaderListener... listeners) {
         this.controller = controller;
+        this.stepExecutorService = stepExecutorService;
         this.listeners.addAll(Arrays.asList(listeners));
     }
 

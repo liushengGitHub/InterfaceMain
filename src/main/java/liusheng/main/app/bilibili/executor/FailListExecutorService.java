@@ -8,20 +8,23 @@ import java.util.concurrent.*;
 
 public class FailListExecutorService extends ThreadPoolExecutor {
     private final Logger logger = Logger.getLogger(FailListExecutorService.class);
-    public final Queue<FailTask> queue = new ConcurrentLinkedQueue();
+    public final Queue<FailTask> queue;
 
     public Queue<FailTask> failTaskQueue() {
         return queue;
     }
 
-    public FailListExecutorService(int fixedSize) {
+    public FailListExecutorService(int fixedSize, Queue<FailTask> queue) {
         super(fixedSize, fixedSize, 0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<Runnable>(1024));
+        this.queue = queue;
     }
 
     public FailListExecutorService() {
-        this(Runtime.getRuntime().availableProcessors() * 2);
+        this(Runtime.getRuntime().availableProcessors() * 2, new ConcurrentLinkedQueue());
     }
-
+    public FailListExecutorService(Queue<FailTask> queue) {
+        this(Runtime.getRuntime().availableProcessors() * 2,queue );
+    }
     @Override
     protected void beforeExecute(Thread t, Runnable r) {
 

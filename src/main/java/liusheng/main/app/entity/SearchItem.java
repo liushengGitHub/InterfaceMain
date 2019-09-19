@@ -1,4 +1,4 @@
-package liusheng.main.app.bilibili;
+package liusheng.main.app.entity;
 
 import cn.hutool.core.img.ImgUtil;
 import cn.hutool.core.io.IoUtil;
@@ -66,13 +66,6 @@ public class SearchItem {
         this.title = title;
         this.imgSrc = imgSrc /*+ "@100w_100h.webp"*/;
         this.author = author;
-        try {
-           /* BufferedImage bufferedImage = ImgUtil.toImage(IoUtil.readBytes(new URL(  this.imgSrc).openStream()));
-            image  = SwingFXUtils.toFXImage(bufferedImage, new WritableImage(100, 100));*/
-           image = new Image(imgSrc);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
 }

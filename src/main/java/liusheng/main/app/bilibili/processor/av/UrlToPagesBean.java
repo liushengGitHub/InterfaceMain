@@ -1,6 +1,6 @@
 package liusheng.main.app.bilibili.processor.av;
 
-import liusheng.main.app.bilibili.ThreadSafe;
+import liusheng.main.annotation.ThreadSafe;
 import liusheng.main.app.bilibili.entity.av.PagesBean;
 import liusheng.main.app.bilibili.parser.PageInfoParser;
 import liusheng.main.process.AbstractLinkedListableProcessor;

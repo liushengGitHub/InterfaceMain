@@ -13,10 +13,18 @@ import java.util.concurrent.Executors;
 public class DefaultPipeline implements Pipeline<DefaultPipeline> {
 
     // 执行链的线程
-    private FailListExecutorService executorService = new FailListExecutorService();
+    private final FailListExecutorService executorService;
 
     public ExecutorService getExecutorService() {
         return executorService;
+    }
+
+    public DefaultPipeline(FailListExecutorService executorService) {
+        this.executorService = executorService;
+    }
+
+    public DefaultPipeline() {
+        this(new FailListExecutorService());
     }
 
     static class HeadProcessor extends AbstractLinkedListableProcessor<Object, HeadProcessor> {
@@ -39,7 +47,7 @@ public class DefaultPipeline implements Pipeline<DefaultPipeline> {
 
     private final Node head = new Node("HEAD", new HeadProcessor());
 
-    private Node tail = new Node("TAIL", new TailProcessor());
+    private final Node tail = new Node("TAIL", new TailProcessor());
 
     {
         head.next = tail;

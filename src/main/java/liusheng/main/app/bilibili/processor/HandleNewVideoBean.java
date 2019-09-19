@@ -1,7 +1,7 @@
 package liusheng.main.app.bilibili.processor;
 
-import liusheng.main.app.bilibili.ThreadSafe;
-import liusheng.main.app.bilibili.donwload.DefaultDownloader;
+import liusheng.main.annotation.ThreadSafe;
+import liusheng.main.app.bilibili.donwload.DefaultDownloaderController;
 import liusheng.main.app.bilibili.donwload.RetryDownloader;
 import liusheng.main.app.bilibili.entity.DashBean;
 import liusheng.main.app.bilibili.entity.DownloadEntity;
@@ -80,8 +80,8 @@ public class HandleNewVideoBean extends AbstractLinkedListableProcessor<NewVideo
                 .ifPresent(dashBean -> {
                     Path flvPath = null;
                     Path mp3Path = null;
-                    DefaultDownloader singletonDownloader1 = new DefaultDownloader();
-                    DefaultDownloader singletonDownloader2 = new DefaultDownloader();
+                    DefaultDownloaderController singletonDownloader1 = new DefaultDownloaderController();
+                    DefaultDownloaderController singletonDownloader2 = new DefaultDownloaderController();
                     try {
                         List<DashBean.AudioBean> audioBeanList = dashBean.getAudio();
 

@@ -22,9 +22,9 @@ public class RetryDownloader extends AbstractLinkedListableProcessor<DownloadEnt
 
     private final List<DownloaderListener> downloaderListeners = new LinkedList<>();
     private final DownloaderController globalController;
-    private final DefaultDownloader singletonDownloader;
+    private final DefaultDownloaderController singletonDownloader;
 
-    public RetryDownloader(DownloaderController globalController, DefaultDownloader singletonDownloader) {
+    public RetryDownloader(DownloaderController globalController, DefaultDownloaderController singletonDownloader) {
         this.globalController = globalController;
         this.singletonDownloader = singletonDownloader;
     }
@@ -38,7 +38,7 @@ public class RetryDownloader extends AbstractLinkedListableProcessor<DownloadEnt
         return globalController;
     }
 
-    public DefaultDownloader getSingletonDownloader() {
+    public DefaultDownloaderController getSingletonDownloader() {
         return singletonDownloader;
     }
 

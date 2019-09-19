@@ -1,6 +1,4 @@
-package liusheng.main.app.bilibili;
-
-import com.google.gson.annotations.SerializedName;
+package liusheng.main.app.bilibili.entity.search;
 
 import java.util.List;
 

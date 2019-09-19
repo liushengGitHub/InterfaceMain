@@ -1,4 +1,4 @@
-package liusheng.main.app.bilibili;
+package liusheng.main.app.entity;
 
 import java.util.List;
 

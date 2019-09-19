@@ -1,9 +1,14 @@
 package liusheng.main.app.acfun.processor;
 
-import cn.hutool.core.util.URLUtil;
+import liusheng.main.annotation.ThreadSafe;
 import liusheng.main.app.acfun.entity.DataBean;
 import liusheng.main.app.acfun.entity.M3u8Bean;
+import liusheng.main.app.acfun.executor.AcfunTask;
+import liusheng.main.app.bilibili.donwload.RetryDownloader;
+import liusheng.main.app.bilibili.executor.FailTask;
+import liusheng.main.app.bilibili.util.StringUtils;
 import liusheng.main.process.AbstractLinkedListableProcessor;
+import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,75 +20,37 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 import java.util.UUID;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
 
+@ThreadSafe
 public class M3u8BeanToDisk extends AbstractLinkedListableProcessor<M3u8Bean, M3u8BeanToDisk> {
-    private final static String FIRST =  "#EXTINF:";
-    private final Path filePath;
 
-    public M3u8BeanToDisk(Path filePath) throws IOException {
-        this.filePath = filePath;
-        if (!Files.exists(filePath)){
-            Files.createDirectories(filePath);
-        }
+    private final Path dirPath;
+    private final Logger logger = Logger.getLogger(M3u8BeanToDisk.class);
+    private final AtomicInteger nameGenerator = new AtomicInteger(1);
+    public M3u8BeanToDisk(Path dirPath) {
+        this.dirPath = dirPath;
+
     }
 
     @Override
     protected void doProcess(M3u8Bean m3u8Bean, List<Object> returnData) throws Throwable {
-        this.pipeline().getExecutorService().execute(()->{
-            try {
-                DataBean dataBean = m3u8Bean.getDataBean();
 
-                String m3u8 = Optional.of(dataBean)
-                        .map(DataBean::getAdaptationSet)
-                        .map(DataBean.AdaptationSetBean::getRepresentation)
-                        .map(list -> {
-                            return list.stream().map(DataBean.AdaptationSetBean.RepresentationBean::getM3u8)
-                                    .findFirst().orElseThrow(RuntimeException::new);
-                        }).orElseThrow(RuntimeException::new);
-
-                Scanner scanner = new Scanner(m3u8);
-                OutputStream outputStream = Files.newOutputStream(filePath.resolve( UUID.randomUUID().toString() +".ts"));
-                readAndWrite("", scanner, outputStream);
-                try {
-                    outputStream.close();
-                } catch (Exception e) {
-                }
-            }catch (Exception e) {
-                e.printStackTrace();
-                throw  new RuntimeException(e);
-            }
-        });
+        String title = getTitle(m3u8Bean);
+        Path filePath = dirPath.resolve(StringUtils.fileNameHandle(title));
+        // 创建子文件夹
+        if (!Files.exists(filePath)) {
+            Files.createDirectories(filePath);
+        }
+        this.pipeline().getExecutorService().execute(new FailTask(new AcfunTask(m3u8Bean,filePath)));
 
     }
+    // 获取标题
 
-    private void readAndWrite(String pre, Scanner scanner, OutputStream outputStream) throws IOException {
-        while (scanner.hasNextLine()) {
-            String line = scanner.nextLine();
-
-            if (line.startsWith(FIRST)) {
-
-                String newLine = scanner.nextLine();
-                String videoUrl= pre + newLine;
-
-                System.out.println(videoUrl);
-
-                InputStream inputStream = new URL(videoUrl)
-                        .openStream();
-
-                byte[] bytes = new byte[102400];
-
-                int length = -1;
-
-                while ( (length = inputStream.read(bytes)) != -1){
-                    outputStream.write(bytes,0,length);
-                }
-                try {
-                    inputStream.close();
-                }catch (Exception e) {}
-            }
-
-        }
+    private String getTitle(M3u8Bean m3u8Bean) {
+        String title = m3u8Bean.getTitle();
+        if (StringUtils.isEmpty(title)) title = m3u8Bean.getBangumiTitle();
+        if (StringUtils.isEmpty(title)) title = String.valueOf(nameGenerator.getAndIncrement());
+        return title;
     }
 }
