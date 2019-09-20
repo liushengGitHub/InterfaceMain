@@ -1,8 +1,12 @@
 package liusheng.test;
 
+import cn.hutool.core.util.ClassLoaderUtil;
 import liusheng.main.app.bilibili.parser.BilibiliSearchInfoParser;
 import org.junit.Test;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 
 public class Main {
@@ -39,5 +43,16 @@ public class Main {
             nums[i + start] = nums[end - i - 1];
             nums[end - i - 1] = a;
         }
+    }
+
+    ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
+    @Test
+    public void test2 () throws  Exception {
+
+        ScriptEngine js = scriptEngineManager.getEngineByExtension("js");
+
+        js.eval(new InputStreamReader(ClassLoaderUtil.getClassLoader().getResourceAsStream("acfun.js")));
+
+        System.out.println(js.get("b"));
     }
 }

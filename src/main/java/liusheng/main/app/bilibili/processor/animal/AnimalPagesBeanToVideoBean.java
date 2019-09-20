@@ -3,8 +3,8 @@ package liusheng.main.app.bilibili.processor.animal;
 import com.google.gson.Gson;
 import liusheng.main.app.bilibili.entity.*;
 import liusheng.main.app.bilibili.entity.animal.AnimalPagesBean;
-import liusheng.main.app.bilibili.util.ConnectionUtils;
-import liusheng.main.app.bilibili.util.StringUtils;
+import liusheng.main.util.ConnectionUtils;
+import liusheng.main.util.StringUtils;
 import liusheng.main.listener.ProcessListener;
 import liusheng.main.process.AbstractLinkedListableProcessor;
 

@@ -2,7 +2,7 @@ package liusheng.main.app.bilibili.parser;
 
 import com.google.gson.Gson;
 import liusheng.main.app.bilibili.entity.animal.AnimalPagesBean;
-import liusheng.main.app.bilibili.util.ConnectionUtils;
+import liusheng.main.util.ConnectionUtils;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 

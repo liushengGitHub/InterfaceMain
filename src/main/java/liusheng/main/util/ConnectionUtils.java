@@ -1,4 +1,4 @@
-package liusheng.main.app.bilibili.util;
+package liusheng.main.util;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -8,6 +8,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class ConnectionUtils {
+
+    /**
+     *
+     * 默认请求的大小是16M
+     */
+    public static final int BYTES = 16 * 1024 * 1024;
+
     public static Connection getConnection(String url) {
         return getDoConnection(url, 3);
     }
@@ -17,6 +24,7 @@ public class ConnectionUtils {
         try {
             return Jsoup.connect(url)
                     .ignoreContentType(true)
+                    .maxBodySize(BYTES)
                     .timeout(60000);
         } catch (Exception e) {
             return getDoConnection(url, n - 1);

@@ -6,7 +6,7 @@ import liusheng.main.app.adapter.SearchPageParser;
 import liusheng.main.app.bilibili.entity.search.ResultBean;
 import liusheng.main.app.bilibili.entity.search.SearchJson;
 import liusheng.main.app.bilibili.entity.search.SearchJson1;
-import liusheng.main.app.bilibili.util.StringUtils;
+import liusheng.main.util.StringUtils;
 import liusheng.main.app.entity.SearchItem;
 import liusheng.main.app.entity.SearchPage;
 

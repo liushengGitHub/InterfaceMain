@@ -158,7 +158,7 @@ public class HandleNewVideoBean extends AbstractLinkedListableProcessor<NewVideo
 
                     } catch (Throwable throwable) {
 
-                        // 取消音频的下载,并删除 ,如果下载完成则无效
+                        // 取消音频的下载,并删除 ,如果下载完成或者下载失败则无效
                         singletonDownloader1.cancel();
                         // 失败则删除文件 和抛出异常
                         try {

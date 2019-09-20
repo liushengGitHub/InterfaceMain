@@ -3,7 +3,7 @@ package liusheng.main.app.acfun.processor;
 import com.google.gson.Gson;
 import liusheng.main.app.acfun.entity.DataBean;
 import liusheng.main.app.acfun.entity.M3u8Bean;
-import liusheng.main.app.bilibili.util.ConnectionUtils;
+import liusheng.main.util.ConnectionUtils;
 import liusheng.main.process.AbstractLinkedListableProcessor;
 import org.apache.log4j.Logger;
 import org.jsoup.nodes.Document;

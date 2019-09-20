@@ -3,7 +3,7 @@ package liusheng.main.app.bilibili.adapter;
 import liusheng.main.app.bilibili.parser.NewParser;
 import liusheng.main.app.bilibili.parser.OldParser;
 import liusheng.main.app.bilibili.parser.Parser;
-import liusheng.main.app.bilibili.util.ConnectionUtils;
+import liusheng.main.util.ConnectionUtils;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 

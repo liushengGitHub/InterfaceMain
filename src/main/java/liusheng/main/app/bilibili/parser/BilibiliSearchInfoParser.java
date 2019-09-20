@@ -3,7 +3,7 @@ package liusheng.main.app.bilibili.parser;
 import com.google.gson.*;
 import liusheng.main.app.bilibili.entity.search.SearchJson;
 import liusheng.main.app.bilibili.entity.search.SearchJson1;
-import liusheng.main.app.bilibili.util.ConnectionUtils;
+import liusheng.main.util.ConnectionUtils;
 import org.apache.log4j.Logger;
 import org.jsoup.Connection;
 import org.jsoup.nodes.Document;

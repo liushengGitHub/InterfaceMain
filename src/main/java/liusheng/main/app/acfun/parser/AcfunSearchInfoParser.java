@@ -3,7 +3,7 @@ package liusheng.main.app.acfun.parser;
 import com.google.gson.Gson;
 import liusheng.main.app.acfun.entity.AcfunSearchJson;
 import liusheng.main.app.bilibili.parser.Parser;
-import liusheng.main.app.bilibili.util.ConnectionUtils;
+import liusheng.main.util.ConnectionUtils;
 
 import java.io.IOException;
 

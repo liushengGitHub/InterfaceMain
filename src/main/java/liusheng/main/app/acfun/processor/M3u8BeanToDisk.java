@@ -1,25 +1,16 @@
 package liusheng.main.app.acfun.processor;
 
 import liusheng.main.annotation.ThreadSafe;
-import liusheng.main.app.acfun.entity.DataBean;
 import liusheng.main.app.acfun.entity.M3u8Bean;
 import liusheng.main.app.acfun.executor.AcfunTask;
-import liusheng.main.app.bilibili.donwload.RetryDownloader;
 import liusheng.main.app.bilibili.executor.FailTask;
-import liusheng.main.app.bilibili.util.StringUtils;
+import liusheng.main.util.StringUtils;
 import liusheng.main.process.AbstractLinkedListableProcessor;
 import org.apache.log4j.Logger;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
-import java.util.Optional;
-import java.util.Scanner;
-import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @ThreadSafe

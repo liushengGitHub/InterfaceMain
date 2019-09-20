@@ -21,16 +21,15 @@ import liusheng.main.app.bilibili.executor.FailListExecutorService;
 import liusheng.main.app.bilibili.executor.FailTask;
 import liusheng.main.app.bilibili.parser.BilibiliSearchInfoParser;
 import liusheng.main.app.bilibili.parser.BilibiliSearchPageParser;
+import liusheng.main.app.manhuadui.parse.ManHuaDuiSearchInfoParser;
+import liusheng.main.app.manhuadui.parse.ManHuaDuiSearchPageParser;
 import liusheng.main.userInter.ComboBoxLabel;
 import liusheng.main.userInter.SearchEvent;
 import liusheng.main.userInter.entity.ComboBoxEntity;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.LinkedBlockingQueue;
 
 public class StartMain extends Application {
 
@@ -39,6 +38,7 @@ public class StartMain extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -63,8 +63,8 @@ public class StartMain extends Application {
         ComboBox<ComboBoxEntity> comboBox = new ComboBox<>();
         List<ComboBoxEntity> comboBoxEntities = Arrays.asList(
                 new ComboBoxEntity(SearchEvent.HTTPS_SEARCH_BILIBILI_COM_ALL, "Bilibili", new BilibiliSearchInfoParser(), new BilibiliSearchPageParser()),
-                new ComboBoxEntity(HTTPS_WWW_ACFUN_CN_REST_PC_DIRECT_SEARCH_VIDEO_KEYWORD, "Acfun", new AcfunSearchInfoParser(),
-                        new AcfunSearchPageParser())
+                new ComboBoxEntity(HTTPS_WWW_ACFUN_CN_REST_PC_DIRECT_SEARCH_VIDEO_KEYWORD, "Acfun", new AcfunSearchInfoParser(), new AcfunSearchPageParser()),
+                new ComboBoxEntity("https://www.manhuadui.com/search/?keywords=%s&page=%s", "漫画堆", new ManHuaDuiSearchInfoParser(), new ManHuaDuiSearchPageParser())
         );
         comboBox.setConverter(new StringConverter<ComboBoxEntity>() {
             @Override
@@ -126,7 +126,7 @@ public class StartMain extends Application {
         listMain.setStyle("-fx-background-color: orange");
 
 
-        SearchEvent searchEvent = new SearchEvent(searchText, mainBox, comboBox,new ConcurrentLinkedQueue<>());
+        SearchEvent searchEvent = new SearchEvent(searchText, mainBox, comboBox, new ConcurrentLinkedQueue<>());
 
 
         searchButton.setOnAction(searchEvent);
@@ -146,7 +146,8 @@ public class StartMain extends Application {
         });
 
         primaryStage.setOnCloseRequest(v -> {
-            Platform.exit();
+            // 当主窗口关闭的时候,应该也关闭其他的的线程
+            System.exit(0);
         });
         primaryStage.setResizable(false);
         primaryStage.setScene(scene);

@@ -1,6 +1,6 @@
 package liusheng.main.app.bilibili.executor;
 
-import liusheng.main.app.bilibili.util.ProcessBuilderUtils;
+import liusheng.main.util.ProcessBuilderUtils;
 import org.apache.log4j.Logger;
 
 import java.io.BufferedWriter;

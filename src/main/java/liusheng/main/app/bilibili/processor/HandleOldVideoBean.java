@@ -49,7 +49,7 @@ public class HandleOldVideoBean extends AbstractLinkedListableProcessor<OldVideo
                         if (durlBeans.isEmpty()) return;
                         boolean b = durlBeans.size() > 1;
                         String refererUrl = oldVideoBean.getUrl();
-                        // 下载这个视频的所有分段
+                        // 下载这个视频的所有分段 (单线程)
                         durlBeans.forEach(durlBean -> {
 
                             try {
@@ -92,6 +92,7 @@ public class HandleOldVideoBean extends AbstractLinkedListableProcessor<OldVideo
                             if (Files.exists(pathTxt)) {
                                 Files.delete(pathTxt);
                             }
+                            // 不应该使用forEach 效率会降低
                             paths.forEach(pathStr -> {
                                 Path path = Paths.get(pathStr);
                                 if (Files.exists(path)) {

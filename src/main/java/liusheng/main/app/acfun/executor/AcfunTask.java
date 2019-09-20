@@ -49,10 +49,12 @@ public class AcfunTask implements Runnable {
             // 下载文件
             readAndWrite("", scanner, outputStream);
         } catch (Exception e) {
+            logger.info("下载失败 : " + e.getMessage());
             if (Objects.nonNull(outputStream)) {
                 try {
                     outputStream.close();
                 } catch (IOException e1) {
+                    
                 } finally {
                     outputStream = null;
                 }
@@ -62,7 +64,7 @@ public class AcfunTask implements Runnable {
                 try {
                     Files.delete(tsFilePath);
                 } catch (IOException ex) {
-                    logger.info("下载失败");
+
                 }
             }
             throw new RuntimeException(e);
@@ -71,7 +73,7 @@ public class AcfunTask implements Runnable {
                 try {
                     outputStream.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
+
                 }
         }
     }

@@ -5,7 +5,7 @@ import liusheng.main.app.bilibili.entity.av.AllPageBean;
 import liusheng.main.app.bilibili.entity.av.PagesBean;
 import liusheng.main.app.bilibili.executor.BilibiliTask;
 import liusheng.main.app.bilibili.executor.FailTask;
-import liusheng.main.app.bilibili.util.StringUtils;
+import liusheng.main.util.StringUtils;
 import liusheng.main.process.AbstractLinkedListableProcessor;
 import org.apache.log4j.Logger;
 

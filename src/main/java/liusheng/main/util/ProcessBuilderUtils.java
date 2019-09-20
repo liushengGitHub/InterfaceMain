@@ -1,4 +1,4 @@
-package liusheng.main.app.bilibili.util;
+package liusheng.main.util;
 
 import org.apache.log4j.Logger;
 

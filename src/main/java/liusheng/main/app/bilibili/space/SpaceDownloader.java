@@ -2,10 +2,8 @@ package liusheng.main.app.bilibili.space;
 
 import com.google.gson.Gson;
 import liusheng.main.app.bilibili.AvDownloader;
-import liusheng.main.app.bilibili.donwload.DefaultDownloaderController;
-import liusheng.main.app.bilibili.listener.DownloadSpeedListener;
 import liusheng.main.app.bilibili.parser.PageInfoParser;
-import liusheng.main.app.bilibili.util.ConnectionUtils;
+import liusheng.main.util.ConnectionUtils;
 import liusheng.main.download.Downloader;
 
 import java.io.IOException;

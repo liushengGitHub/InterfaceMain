@@ -184,7 +184,7 @@ public class SearchEvent implements EventHandler<ActionEvent> {
         }
 
         private void loadData(Integer t, ObservableList<Node> nodes) {
-            Service<List<SearchItem>> service = new Service<List<SearchItem>>() {
+            Service<List<SearchItem>> service =     new Service<List<SearchItem>>() {
                 @Override
                 protected Task createTask() {
                     return new Task<List<SearchItem>>() {
@@ -227,6 +227,11 @@ public class SearchEvent implements EventHandler<ActionEvent> {
         }
     }
 
+    /**
+     *
+     * 有个bug 在点击搜索的时候,应该取消之前的图片下载任务
+     * @param event
+     */
     @Override
     public void handle(ActionEvent event) {
         ComboBoxEntity comboBoxEntity = getSelectedItem();

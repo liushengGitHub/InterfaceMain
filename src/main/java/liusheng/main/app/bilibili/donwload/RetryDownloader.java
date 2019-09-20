@@ -1,7 +1,7 @@
 package liusheng.main.app.bilibili.donwload;
 
 import liusheng.main.app.bilibili.entity.DownloadEntity;
-import liusheng.main.app.bilibili.util.ConnectionUtils;
+import liusheng.main.util.ConnectionUtils;
 import liusheng.main.process.AbstractLinkedListableProcessor;
 import org.apache.log4j.Logger;
 
@@ -121,9 +121,8 @@ public class RetryDownloader extends AbstractLinkedListableProcessor<DownloadEnt
             while (sum < len) {
 
                 if (singletonDownloader.isCancel() || globalController.isCancel()  ) {
-                    // 取消的话删除
+                    // 取消的删除 关闭流
                     outputStream.close();
-                    Files.delete(path);
                     break;
                 }
                 if (singletonDownloader.isPause() || globalController.isPause()  ) {

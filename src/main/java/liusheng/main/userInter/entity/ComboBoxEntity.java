@@ -4,10 +4,14 @@ import liusheng.main.app.adapter.SearchPageParser;
 import liusheng.main.app.bilibili.parser.Parser;
 
 public class ComboBoxEntity {
+    // 搜索的Url Pattern
     private String pattern;
+    // 在页面显示的名字
     private String labelName;
+    // 解析搜索页面的 把Json转化为 对象
     private Parser<?> parser ;
-    private SearchPageParser searchPageParser;
+    private SearchPageParser searchPageParser; // 把对象转换为我们对象的
+
     public Parser<?> getParser() {
         return parser;
     }

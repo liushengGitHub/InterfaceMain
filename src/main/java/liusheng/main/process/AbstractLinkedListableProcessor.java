@@ -1,12 +1,10 @@
 package liusheng.main.process;
 
 import liusheng.main.listener.ProcessListener;
-import liusheng.main.pipeline.Pipeline;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 import java.util.stream.Collectors;
 
 public abstract class AbstractLinkedListableProcessor<T,B extends AbstractLinkedListableProcessor<T, B>> extends AbstractLinkedProcessor
